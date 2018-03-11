@@ -19,8 +19,10 @@ export default {
     var windowWidth = html.clientWidth
     if (windowWidth / 22.5 > 17) {
       html.style.fontSize = 17 + 'px'
+      this.memeryData.remStyle = 17
     } else {
       html.style.fontSize = windowWidth / 22.5 + 'px'
+      this.memeryData.remStyle = windowWidth / 22.5
     }
     this.memeryData.screenWidth = windowWidth
   }
@@ -33,6 +35,7 @@ export default {
 @import './style/cssConfig.scss';
 .pageContent{
   padding-top: $headerHeight;
+  padding-bottom: $footerHeight;
 }
 .router-fade-enter-active, .router-fade-leave-active {
   transition: opacity .3s;

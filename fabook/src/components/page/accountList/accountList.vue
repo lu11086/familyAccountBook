@@ -1,42 +1,38 @@
 <template>
   <div class="pageContent">
     <com-head :menuType="headType"></com-head>
-  <div class="hello">
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank">Core Docs</a>
+    <ul class="dayList">
+      <li class="listTitle clearfix">
+        <span class="fl">2018-3-11</span>
+        <span class="fr">收入：50 &emsp;支出：100</span>
       </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank">Forum</a>
+      <li class="listItem pay clearfix">
+        <i class="fl"></i>
+        <span class="fl">捡的是假钱，被警察罚款倒贴了100</span>
+        <span class="fr">-100</span>
       </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank">Community Chat</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank">Twitter</a>
-      </li>
-      <br>
-      <li>
-        <a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a>
+      <li class="listItem income clearfix">
+        <i class="fl"></i>
+        <span class="fl">我在马路边捡了50块钱~揣兜</span>
+        <span class="fr">+50</span>
       </li>
     </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a href="http://router.vuejs.org/" target="_blank">vue-router</a>
+    <ul class="dayList">
+      <li class="listTitle clearfix">
+        <span class="fl">2018-3-10</span>
+        <span class="fr">收入：0 &emsp;支出：300</span>
       </li>
-      <li>
-        <a href="http://vuex.vuejs.org/" target="_blank">vuex</a>
+      <li class="listItem pay clearfix">
+        <i class="fl"></i>
+        <span class="fl">B85翻车啦，又去中关村买了块</span>
+        <span class="fr">-170</span>
       </li>
-      <li>
-        <a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a>
-      </li>
-      <li>
-        <a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a>
+      <li class="listItem pay clearfix">
+        <i class="fl"></i>
+        <span class="fl">淘宝买了块二手B85</span>
+        <span class="fr">-130</span>
       </li>
     </ul>
-  </div>
     <com-foot :footerTab="1"></com-foot>
   </div>
 </template>
@@ -63,18 +59,40 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  $defaultGreen: #42b983;
-  h1, h2 {
-    font-weight: normal;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-    li {
-      display: inline-block;
-      margin: 0 10px;
-      a {
-        color: $defaultGreen;
+  @import '../../../style/cssConfig.scss';
+  ul.dayList{
+    font-size: .9rem;
+    li{
+      &.listTitle{
+        padding: .5rem 1rem;
+      }
+      &.listItem{
+        line-height: 2rem;
+        padding-right: 1rem;
+        border-bottom: 1px solid $defaultLightGray;
+        i.fl {
+          width: .3rem;
+          height: 2rem;
+        }
+        span.fl{
+          margin-left: .7rem;
+        }
+        &.income{
+          i.fl{
+            background: $defaultRed;
+          }
+          span.fr{
+            color: $defaultRed;
+          }
+        }
+        &.pay{
+          i.fl{
+            background: $defaultGreen;
+          }
+          span.fr{
+            color: $defaultGreen;
+          }
+        }
       }
     }
   }

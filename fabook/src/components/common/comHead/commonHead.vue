@@ -61,6 +61,7 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 8;
     .leftHeader{
       margin-left: 1rem;
       color: #fff;

@@ -55,6 +55,7 @@ export default {
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 10;
     ul{
       height: $footerHeight - .5rem;
       width: 100%;

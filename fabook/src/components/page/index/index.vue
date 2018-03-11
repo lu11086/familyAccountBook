@@ -6,10 +6,28 @@
         <div class="lineTab clearfix">
           <div class="halfWidth fl textArea">
             <p>本月已消费总额为：</p>
-            <p></p>
+            <p class="textCenter"><span>2562</span>元</p>
+            <p>花销最大的类型为：</p>
+            <p class="textCenter"><span>食品餐饮</span>：<span>60.42%</span></p>
           </div>
           <div class="halfWidth fl echartsArea">
             <echart-pie :echartData="echartData1"></echart-pie>
+          </div>
+        </div>
+        <div class="lineTab clearfix">
+          <p class="outLine"><i class="outLine-warn fl"></i>距离消费红线还有<span class="outLine-warn">238</span>元的距离，请<span class="outLine-warn">谨慎</span>消费</p>
+        </div>
+        <div class="lineTab">
+          <div class="echartsArea2">
+            <echart-bar :echartData="echartData3"></echart-bar>
+          </div>
+        </div>
+        <div class="lineTab clearfix">
+          <div class="topList">
+            <p class="topListTitle">本月单次消费金额-Top3:</p>
+            <p class="clearfix">1.<span class="topTitle">同学聚会-吃饭K歌</span><span class="topPrice">-572</span></p>
+            <p class="clearfix">2.<span class="topTitle">吃炫迈停不下来买了一箱子</span><span class="topPrice">-329</span></p>
+            <p class="clearfix">3.<span class="topTitle">喝凉水塞了牙所以去拔牙了</span><span class="topPrice">-229</span></p>
           </div>
         </div>
       </div>
@@ -17,11 +35,30 @@
     <transition name="rightTab">
       <div class="pageTab" v-show="showArea == 1">
         <div class="lineTab clearfix">
-          <div class="halfWidth fl">
-            <p>本月消费金额为：</p>
+          <div class="halfWidth fl textArea">
+            <p>本月已消费总额为：</p>
+            <p class="textCenter"><span>2562</span>元</p>
+            <p>花销最大的类型为：</p>
+            <p class="textCenter"><span>食品餐饮</span>：<span>60.42%</span></p>
           </div>
           <div class="halfWidth fl echartsArea">
             <echart-pie :echartData="echartData2"></echart-pie>
+          </div>
+        </div>
+        <div class="lineTab clearfix">
+          <p class="outLine"><i class="outLine-warn fl"></i>距离消费红线还有<span class="outLine-warn">238</span>元的距离，请<span class="outLine-warn">谨慎</span>消费</p>
+        </div>
+        <div class="lineTab">
+          <div class="echartsArea2">
+            <echart-bar :echartData="echartData4"></echart-bar>
+          </div>
+        </div>
+        <div class="lineTab clearfix">
+          <div class="topList">
+            <p class="topListTitle">本月单次消费金额-Top3:</p>
+            <p class="clearfix">1.<span class="topTitle">同学聚会-吃饭K歌</span><span class="topPrice">-572</span></p>
+            <p class="clearfix">2.<span class="topTitle">吃炫迈停不下来买了一箱子</span><span class="topPrice">-329</span></p>
+            <p class="clearfix">3.<span class="topTitle">喝凉水塞了牙所以去拔牙了</span><span class="topPrice">-229</span></p>
           </div>
         </div>
       </div>
@@ -34,6 +71,7 @@
 import comHead from '@/components/common/comHead/commonHead'
 import comFoot from '@/components/common/comFoot/commonFoot'
 import echartPie from '@/components/common/echarts-pie/echartsPie'
+import echartBar from '@/components/common/echarts-bar/echartsBar'
 import eventBus from '@/components/common/eventBus.js'
 export default {
   data () {
@@ -46,11 +84,21 @@ export default {
       echartData1: {
         id: 'single-pie'
       },
+      echartData3: {
+        id: 'single-bar'
+      },
       echartData2: {
         id: 'family-pie',
         style: {
           height: '10rem',
           width: this.memeryData.screenWidth / 2 + 'px'
+        }
+      },
+      echartData4: {
+        id: 'family-bar',
+        style: {
+          height: '15rem',
+          width: this.memeryData.screenWidth - this.memeryData.remStyle + 'px'
         }
       },
       showArea: 0
@@ -59,7 +107,8 @@ export default {
   components: {
     comHead,
     comFoot,
-    echartPie
+    echartPie,
+    echartBar
   },
   mounted () {
     let _this = this
@@ -77,19 +126,83 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+  @import '../../../style/cssConfig.scss';
   .pageTab{
     overflow: hidden;
     width: 100%;
     .lineTab{
       width: 100%;
+      .textArea{
+        padding: 1rem;
+      }
+      .topList{
+        line-height: 1.5rem;
+        p{
+          color: $defaultGreen;
+          border-bottom: 1px solid $defaultLightGray;
+          &.topListTitle{
+            padding: .5rem 1rem;
+            border-top: 1px solid $defaultLightGray;
+          }
+          &.clearfix{
+            padding: .25rem 1rem;
+          }
+        }
+        span{
+          font-size: .9rem;
+          &.topTitle{
+            padding-left: .5rem;
+          }
+          &.topPrice{
+             float: right;
+           }
+        }
+      }
+      .outLine{
+        font-size: .9rem;
+        padding: .5rem 1rem;
+        text-align: center;
+        border-radius: .5rem;
+        border: 1px solid $defaultGray;
+        i{
+          height: 1rem;
+          width: 1rem;
+          border-radius: 100%;
+          display: inline-block;
+          margin-top: .1rem;
+          &.outLine-warn{
+            background: $defaultRed;
+          }
+          &.outLine-safe{
+            background: $defaultGreen;
+          }
+        }
+        span{
+          &.outLine-warn{
+            color: $defaultRed;
+          }
+          &.outLine-safe{
+            color: $defaultGreen;
+          }
+        }
+      }
       .halfWidth{
         width: 50%;
-        &.textArea{
-          padding: 1rem;
-        }
+          p{
+            line-height: 2rem;
+            &.textCenter{
+              font-size: .9rem;
+              text-align: center;
+            }
+          }
       }
       .echartsArea{
         height: 10rem
+      }
+      .echartsArea2{
+        width: calc( 100% - 1rem );
+        height: 15rem;
+        margin: 1.5rem .5rem;
       }
     }
   }
