@@ -40,8 +40,10 @@ export default {
       this.changPage(this.activeTab)
     },
     changPage ($index) {
-      if ($index === 0) window.location.href = window.location.origin + '#/index'
-      if ($index === 1) window.location.href = window.location.origin + '#/accountList'
+      if ($index === 0) this.$router.push('/index')
+      if ($index === 1) this.$router.push('/accountList')
+      if ($index === 3) this.$router.push('/familyInfo')
+      if ($index === 4) this.$router.push('/userSetting')
     }
   }
 }

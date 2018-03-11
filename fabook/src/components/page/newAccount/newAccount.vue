@@ -1,6 +1,5 @@
 <template>
   <div class="pageContent">
-    <com-head :menuType="headType"></com-head>
     <ul class="dayList">
       <li class="listTitle clearfix">
         <span class="fl">2018-3-11</span>
@@ -33,26 +32,14 @@
         <span class="fr">-130</span>
       </li>
     </ul>
-    <com-foot :footerTab="1"></com-foot>
   </div>
 </template>
 
 <script>
-import comHead from '@/components/common/comHead/commonHead'
-import comFoot from '@/components/common/comFoot/commonFoot'
 export default {
   data () {
     return {
-      headType: {
-        title: ['账单列表'],
-        lTitleType: 0,
-        rButtonType: 2
-      }
     }
-  },
-  components: {
-    comHead,
-    comFoot
   }
 }
 </script>

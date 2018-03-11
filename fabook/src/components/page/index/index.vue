@@ -79,7 +79,7 @@ export default {
       headType: {
         title: ['个人', '家庭'],
         lTitleType: 1,
-        rButtonType: 0
+        rButtonType: 1
       },
       echartData1: {
         id: 'single-pie'

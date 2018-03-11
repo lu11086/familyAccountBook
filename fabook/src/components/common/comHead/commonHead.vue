@@ -7,8 +7,9 @@
     <li class="fl" v-for="(tabName, index) in menuType.title" v-text="tabName" :class="[index == leftTab ? 'active':'']" @click="changeLeftHeadTab(index)" :key="index"></li>
   </ul>
   <!--单按钮-头部右侧-->
-  <button v-if="menuType.rButtonType == 0" class="rightHeader iconfont fabook-tianjiayonghu fr"></button>
-  <button v-if="menuType.rButtonType == 1" class="rightHeader iconfont fabook-shaixuan fr"></button>
+  <button v-if="menuType.rButtonType == 1" class="rightHeader iconfont fabook-tianjiayonghu fr"></button>
+  <button v-if="menuType.rButtonType == 2" class="rightHeader iconfont fabook-shaixuan fr"></button>
+  <button v-if="menuType.rButtonType == 4" class="rightHeader iconfont fabook-youjian fr"></button>
 </header>
 </template>
 
