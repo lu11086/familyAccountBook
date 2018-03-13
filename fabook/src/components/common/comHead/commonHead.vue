@@ -6,10 +6,14 @@
   <ul class="leftHeader fl clearfix" v-if="menuType.lTitleType == 1">
     <li class="fl" v-for="(tabName, index) in menuType.title" v-text="tabName" :class="[index == leftTab ? 'active':'']" @click="changeLeftHeadTab(index)" :key="index"></li>
   </ul>
+  <!--左侧标签为后退按钮的-->
+  <div v-if="menuType.lTitleType == 2" class="leftHeader iconfont fabook-guanbi fl backIcon" @click="$router.goBack()"></div>
+  <div v-if="menuType.lTitleType == 3" class="leftHeader iconfont fabook-guanbi fl backIcon" @click="$router.goBackSec()"></div>
+  <p class="leftHeader typeCenter fl" v-if="menuType.lTitleType > 1" :style="'margin-left:' + memeryData.headerLeft + 'px'">{{menuType.title[0]}}</p>
   <!--单按钮-头部右侧-->
-  <button v-if="menuType.rButtonType == 1" class="rightHeader iconfont fabook-tianjiayonghu fr"></button>
-  <button v-if="menuType.rButtonType == 2" class="rightHeader iconfont fabook-shaixuan fr"></button>
-  <button v-if="menuType.rButtonType == 4" class="rightHeader iconfont fabook-youjian fr"></button>
+  <div v-if="menuType.rButtonType == 1" class="rightHeader iconfont fabook-tianjiayonghu fr"></div>
+  <div v-if="menuType.rButtonType == 2" class="rightHeader iconfont fabook-shaixuan fr"></div>
+  <div v-if="menuType.rButtonType == 4" class="rightHeader iconfont fabook-youjian fr"></div>
 </header>
 </template>
 
@@ -66,6 +70,15 @@ export default {
     .leftHeader{
       margin-left: 1rem;
       color: #fff;
+      &.backIcon{
+        font-size: 1.2rem;
+        line-height: $headerHeight - .3rem;
+      }
+      &.typeCenter{
+        font-size: 1.1rem;
+        line-height: $headerHeight - .3rem;
+        text-align: center;
+      }
     }
     p{
       display: inline-block;

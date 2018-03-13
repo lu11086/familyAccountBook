@@ -70,7 +70,9 @@ export default {
       color: #fff;
       text-align: center;
       font-size: 1.2rem;
+      font-weight: bold;
       line-height: 2rem;
+      text-shadow: 0 0 .5rem $defaultBlue;
     }
     p{
       color: #fff;

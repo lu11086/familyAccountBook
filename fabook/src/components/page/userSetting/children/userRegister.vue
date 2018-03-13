@@ -1,18 +1,14 @@
 <template>
-  <div class="pageContent">
-    <transition :name="transitionName">
-      <router-view class="Router"></router-view>
-    </transition>
+  <div>
     <com-head :menuType="headType"></com-head>
     <ul class="settingArea">
       <li class="userInfo clearfix">
-        <img src="@/assets/userDefault.png" alt="用户头像" class="fl" v-show="!isLogin">
-        <img :src="userHeadImg" alt="用户头像" class="fl" v-show="isLogin">
-        <div class="userTab fl"  @click="userLogin()">
-          <p class="userName" v-text="userName"></p>
-          <p v-text="userWord"></p>
+        <img src="@/assets/userHeader.jpg" alt="用户头像" class="fl">
+        <div class="userTab fl">
+          <p class="userName">测试用管理员</p>
+          <p>简介？tan90°</p>
         </div>
-        <i class="iconfont fabook-bianji fr" @click="toEditUserInfo()" v-show="isLogin"></i>
+        <i class="iconfont fabook-bianji fr"></i>
       </li>
       <li class="blank"></li>
       <li class="lineTab">
@@ -28,55 +24,34 @@
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
     </ul>
-    <com-foot :footerTab="4"></com-foot>
   </div>
 </template>
 
 <script>
 import comHead from '@/components/common/comHead/commonHead'
-import comFoot from '@/components/common/comFoot/commonFoot'
 export default {
   data () {
     return {
       headType: {
-        title: ['用户设置'],
-        lTitleType: 0,
+        title: ['注册用户'],
+        lTitleType: 3,
         rButtonType: 0
-      },
-      transitionName: 'slide-right',
-      isLogin: false,
-      userName: '点击此处登录',
-      userWord: '登录后可使用更多功能',
-      userHeadImg: ''
+      }
     }
-  },
-  beforeRouteUpdate (to, from, next) {
-    if (this.$router.isBack) {
-      this.transitionName = 'slide-right'
-    } else {
-      this.transitionName = 'slide-left'
-    }
-    this.$router.isBack = false
-    setTimeout(function () { next() }, 50)
   },
   components: {
-    comHead,
-    comFoot
+    comHead
+  },
+  mounted () {
   },
   methods: {
-    toEditUserInfo: function () {
-      this.$router.push('/userSetting/userInfo')
-    },
-    userLogin: function () {
-      this.$router.push('/userSetting/userLogin')
-    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  @import '../../../style/cssConfig.scss';
+  @import '../../../../style/cssConfig';
   .pageContent{
     background: #f5f5f5;
     min-height: 100vh;
@@ -102,7 +77,7 @@ export default {
           padding-left: 1rem;
           height: 5rem;
           width: calc( 100% - 7rem);
-          line-height: 2.3rem;
+          line-height: 2.5rem;
           p.userName{
             font-size: 1rem;
           }

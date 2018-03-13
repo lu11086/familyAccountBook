@@ -1,9 +1,6 @@
 <template>
   <div>
-    <keep-alive>
-      <router-view v-if="$route.meta.keepAlive"></router-view>
-    </keep-alive>
-    <router-view v-if="!$route.meta.keepAlive"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -25,6 +22,7 @@ export default {
       this.memeryData.remStyle = windowWidth / 22.5
     }
     this.memeryData.screenWidth = windowWidth
+    this.memeryData.headerLeft = windowWidth / 2 - 4.5 * this.memeryData.remStyle
   }
 }
 </script>
@@ -37,9 +35,36 @@ export default {
   padding-top: $headerHeight;
   padding-bottom: $footerHeight;
 }
+
+.Router {
+  position: absolute;
+  width: 100%;
+  transition: all .5s ease;
+  top: 0;
+  padding-top: $headerHeight;
+  z-index: 11;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100% 0);
+}
+
 .router-fade-enter-active, .router-fade-leave-active {
   transition: opacity .3s;
 }
+
 .router-fade-enter, .router-fade-leave-active {
   opacity: 0;
 }
