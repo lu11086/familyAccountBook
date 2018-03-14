@@ -14,17 +14,19 @@
         <input type="password" class="pwdNoSee fl" name="password-nosee" v-model="password" v-show="!isPwdSee" v-focus="!isPwdSee" @blur="checkPwd()"/>
         <input type="text" class="pwdCanSee fl" name="password-see" v-model="password" v-show="isPwdSee" placeholder="请输入密码" @focus="changeInput()"/>
       </div>
-      <div><button class="submit">登&emsp;录</button></div>
+      <div><button class="submit" @click="loginSystem()">登&emsp;录</button></div>
       <div class="specialType clearfix">
         <span class="fl">忘记密码？</span>
         <span class="fr" @click="userRegister()">立即注册</span>
       </div>
     </div>
+    <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
   </div>
 </template>
 
 <script>
 import comHead from '@/components/common/comHead/commonHead'
+import toastMsg from '@/components/common/message/toastMsg'
 export default {
   data () {
     return {
@@ -36,11 +38,13 @@ export default {
       transitionName: 'slide-right',
       username: '',
       password: '',
-      isPwdSee: true
+      isPwdSee: true,
+      toastMsg: '登录成功!'
     }
   },
   components: {
-    comHead
+    comHead,
+    toastMsg
   },
   beforeRouteUpdate (to, from, next) {
     if (this.$router.isBackSec) {
@@ -73,6 +77,9 @@ export default {
     },
     userRegister: function () {
       this.$router.push('/userSetting/userLogin/userRegister')
+    },
+    loginSystem: function () {
+      this.$refs.toastMsg.openToast()
     }
   }
 }

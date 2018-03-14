@@ -18,9 +18,17 @@ router.post('/singleData',
         if(err){
          console.log(err)
         }else{
-            var selectSQL= "select * from fabook_user WHERE runoob_id='"+queryId+"';";
+            var selectSQL= "select * from fabook_user WHERE fabook_id='"+queryId+"';";
             conn.query(selectSQL,function(err,result){
-                res.send(result)
+                var data = {}
+                data.data = result
+                if(result.length > 0) {
+                    data.msg = 'success'
+                    res.send(data)
+                }else{
+                    data.msg = 'error'
+                    res.send(data)
+                }
                 //释放连接
                 conn.release();
             });

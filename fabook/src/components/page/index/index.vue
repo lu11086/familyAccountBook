@@ -115,7 +115,7 @@ export default {
     eventBus.$on('changeLeftHeadTab', function (data) {
       _this.$set(_this.$data, 'showArea', data.leftTab)
     })
-    this.$http.post('http://192.168.31.245:3000/index/singleData', {id: '1001'}, {emulateJSON: true}).then(function (response) {
+    this.$http.post(this.memeryData.serverUrl + '/index/singleData', {id: '100000001'}, {emulateJSON: true}).then(function (response) {
       console.log(response.body)
     }, function (response) {
       console.log(response)

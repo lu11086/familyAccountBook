@@ -5,7 +5,7 @@
     <li class="fl"><i class="iconfont fabook-liebiao" :class="[activeTab == 1 ? 'active animation_jumpShow':'']" @click="changeFooterTab(1)"></i></li>
     <li class="fl"><i class="iconfont fabook-xinzeng" :class="[activeTab == 2 ? 'active':'']" @click="changeFooterTab(2)"></i></li>
     <li class="fl"><i class="iconfont fabook-jiankangguanli" :class="[activeTab == 3 ? 'active animation_jumpShow':'']" @click="changeFooterTab(3)"></i></li>
-    <li class="fl"><i class="iconfont fabook-nanxing" :class="[activeTab == 4 ? 'active animation_jumpShow':'']" @click="changeFooterTab(4)"></i></li>
+    <li class="fl"><i class="iconfont" :class="[activeTab == 4 ? 'active animation_jumpShow':'',memeryData.userInfo.sexNumber == 1 ? 'fabook-nvxing' : 'fabook-nanxing']" @click="changeFooterTab(4)"></i></li>
   </ul>
 </footer>
 </template>

@@ -5,10 +5,10 @@
     </transition>
     <com-head :menuType="headType"></com-head>
     <ul class="settingArea">
-      <li class="userInfo clearfix">
+      <li class="userInfo clearfix" @click="userLogin()">
         <img src="@/assets/userDefault.png" alt="用户头像" class="fl" v-show="!isLogin">
         <img :src="userHeadImg" alt="用户头像" class="fl" v-show="isLogin">
-        <div class="userTab fl"  @click="userLogin()">
+        <div class="userTab fl" >
           <p class="userName" v-text="userName"></p>
           <p v-text="userWord"></p>
         </div>
@@ -68,7 +68,7 @@ export default {
       this.$router.push('/userSetting/userInfo')
     },
     userLogin: function () {
-      this.$router.push('/userSetting/userLogin')
+      if (!this.isLogin) this.$router.push('/userSetting/userLogin')
     }
   }
 }

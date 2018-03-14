@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import $context from '../config/context.js'
 export default {
   name: 'family-account-book-Area',
   data () {
@@ -23,6 +24,8 @@ export default {
     }
     this.memeryData.screenWidth = windowWidth
     this.memeryData.headerLeft = windowWidth / 2 - 4.5 * this.memeryData.remStyle
+    this.memeryData.serverUrl = $context.serverUrl
+    this.memeryData.userInfo.sexNumber = 0
   }
 }
 </script>
@@ -61,11 +64,11 @@ export default {
   transform: translate(-100% 0);
 }
 
-.router-fade-enter-active, .router-fade-leave-active {
+.opacity-fade-enter-active, .opacity-fade-leave-active {
   transition: opacity .3s;
 }
 
-.router-fade-enter, .router-fade-leave-active {
+.opacity-fade-enter, .opacity-fade-leave-active {
   opacity: 0;
 }
 </style>
