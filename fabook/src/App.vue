@@ -25,7 +25,9 @@ export default {
     this.memeryData.screenWidth = windowWidth
     this.memeryData.headerLeft = windowWidth / 2 - 4.5 * this.memeryData.remStyle
     this.memeryData.serverUrl = $context.serverUrl
+    this.memeryData.userInfo = {}
     this.memeryData.userInfo.sexNumber = 0
+    this.memeryData.isLogin = false
   }
 }
 </script>

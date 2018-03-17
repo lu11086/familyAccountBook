@@ -6,13 +6,13 @@
     <com-head :menuType="headType"></com-head>
     <ul class="settingArea">
       <li class="userInfo clearfix" @click="userLogin()">
-        <img src="@/assets/userDefault.png" alt="用户头像" class="fl" v-show="!isLogin">
-        <img :src="userHeadImg" alt="用户头像" class="fl" v-show="isLogin">
+        <img src="@/assets/userDefault.png" alt="用户头像" class="fl" v-show="!memeryData.isLogin">
+        <img :src="userHeadImg" alt="用户头像" class="fl" v-show="memeryData.isLogin">
         <div class="userTab fl" >
           <p class="userName" v-text="userName"></p>
           <p v-text="userWord"></p>
         </div>
-        <i class="iconfont fabook-bianji fr" @click="toEditUserInfo()" v-show="isLogin"></i>
+        <i class="iconfont fabook-bianji fr" @click="toEditUserInfo()" v-show="memeryData.isLogin"></i>
       </li>
       <li class="blank"></li>
       <li class="lineTab">
@@ -44,7 +44,6 @@ export default {
         rButtonType: 0
       },
       transitionName: 'slide-right',
-      isLogin: false,
       userName: '点击此处登录',
       userWord: '登录后可使用更多功能',
       userHeadImg: ''
@@ -68,7 +67,7 @@ export default {
       this.$router.push('/userSetting/userInfo')
     },
     userLogin: function () {
-      if (!this.isLogin) this.$router.push('/userSetting/userLogin')
+      if (!this.memeryData.isLogin) this.$router.push('/userSetting/userLogin')
     }
   }
 }
