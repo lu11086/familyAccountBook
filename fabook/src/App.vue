@@ -28,6 +28,7 @@ export default {
     this.memeryData.userInfo = {}
     this.memeryData.userInfo.sexNumber = 0
     this.memeryData.isLogin = false
+    this.memeryData.isCloseNew = false
   }
 }
 </script>
@@ -55,22 +56,49 @@ export default {
 .slide-left-enter,
 .slide-right-leave-active {
   opacity: 0;
-  -webkit-transform: translate(100%, 0);
-  transform: translate(100%, 0);
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
 }
-
 .slide-left-leave-active,
 .slide-right-enter {
   opacity: 0;
-  -webkit-transform: translate(-100%, 0);
-  transform: translate(-100% 0);
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.slide-up-enter,
+.slide-down-leave-active {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 2 * $headerHeight, 0);
+  transform: translate3d(0, 2 * $headerHeight, 0);
+}
+.slide-up-leave-active,
+.slide-down-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -2 * $headerHeight, 0);
+  transform: translate3d(0, -2 * $headerHeight, 0);
 }
 
 .opacity-fade-enter-active, .opacity-fade-leave-active {
   transition: opacity .3s;
 }
-
 .opacity-fade-enter, .opacity-fade-leave-active {
   opacity: 0;
+}
+
+.wh_container .wh_content_all {
+  background-color: $defaultBlue;
+}
+.wh_content_item div .wh_isToday {
+  color: $defaultBlue;
+}
+.wh_content_item div, .wh_content_item div li {
+   color: #fff;
+}
+.wh_container {
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  bottom: 3rem;
 }
 </style>

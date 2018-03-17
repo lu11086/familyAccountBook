@@ -11,7 +11,7 @@ Router.prototype.goBack = function () {
   this.isBack = true
   window.history.go(-1)
 }
-
+// 二级路由返回方法-防止互相影响
 Router.prototype.goBackSec = function () {
   this.isBackSec = true
   window.history.go(-1)
