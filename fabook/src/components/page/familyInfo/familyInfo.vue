@@ -27,8 +27,20 @@
         <p>更改公告</p>
       </li>
       <li class="threePartTab fl">
+        <i class="iconfont fabook-linechart"></i>
+        <p>家庭红线</p>
+      </li>
+      <li class="threePartTab fl">
+        <i class="iconfont fabook-toufangfangan"></i>
+        <p>他人方案</p>
+      </li>
+      <li class="threePartTab fl">
         <i class="iconfont fabook-yijianfankui"></i>
         <p>质疑反馈</p>
+      </li>
+      <li class="threePartTab fl">
+        <i class="iconfont fabook-gengduo"></i>
+        <p>更多功能</p>
       </li>
     </ul>
     <com-foot :footerTab="3"></com-foot>
@@ -107,6 +119,9 @@ export default {
           }
           &.fabook-bulletin{
             font-size: 1.6rem;
+          }
+          &.fabook-gengduo{
+            font-weight: bold;
           }
         }
         p{

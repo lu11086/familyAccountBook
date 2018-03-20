@@ -18,29 +18,37 @@
         <p>记录类型 :</p>
         <transition name="opacity-fade">
           <ul v-show="accountPay" class="chooseTypeArea">
-            <li><i class="iconfont fabook-canyin"></i><h5>餐饮</h5></li>
-            <li><i class="iconfont fabook-fushi"></i><h5>服饰</h5></li>
-            <li><i class="iconfont fabook-jiaotong"></i><h5>交通</h5></li>
-            <li><i class="iconfont fabook-yule"></i><h5>娱乐</h5></li>
-            <li><i class="iconfont fabook-shejiao"></i><h5>社交</h5></li>
-            <li><i class="iconfont fabook-jiaju"></i><h5>家居</h5></li>
-            <li><i class="iconfont fabook-tongxun"></i><h5>通讯</h5></li>
-            <li><i class="iconfont fabook-shouye"></i><h5>美容</h5></li>
-            <li><i class="iconfont fabook-yundong"></i><h5>运动</h5></li>
-            <li><i class="iconfont fabook-yiliao"></i><h5>医疗</h5></li>
-            <li><i class="iconfont fabook-xuexi"></i><h5>学习</h5></li>
-            <li><i class="iconfont fabook-licai"></i><h5>理财</h5></li>
-            <li><i class="iconfont fabook-chongwu"></i><h5>宠物</h5></li>
-            <li><i class="iconfont fabook-qita"></i><h5>其他</h5></li>
+            <li @click="chooseType('201')" :class="[payType == 201 ? 'active': '']"><i class="iconfont fabook-canyin"></i><h5>餐饮</h5></li>
+            <li @click="chooseType('202')" :class="[payType == 202 ? 'active': '']"><i class="iconfont fabook-fushi"></i><h5>服饰</h5></li>
+            <li @click="chooseType('203')" :class="[payType == 203 ? 'active': '']"><i class="iconfont fabook-jiaotong"></i><h5>交通</h5></li>
+            <li @click="chooseType('204')" :class="[payType == 204 ? 'active': '']"><i class="iconfont fabook-yule"></i><h5>娱乐</h5></li>
+            <li @click="chooseType('205')" :class="[payType == 205 ? 'active': '']"><i class="iconfont fabook-shejiao"></i><h5>社交</h5></li>
+          </ul>
+        </transition>
+        <transition name="opacity-fade">
+          <ul v-show="accountPay" class="chooseTypeArea" style="top: 7rem">
+            <li @click="chooseType('206')" :class="[payType == 206 ? 'active': '']"><i class="iconfont fabook-jiaju"></i><h5>家居</h5></li>
+            <li @click="chooseType('207')" :class="[payType == 207 ? 'active': '']"><i class="iconfont fabook-tongxun"></i><h5>通讯</h5></li>
+            <li @click="chooseType('208')" :class="[payType == 208 ? 'active': '']"><i class="iconfont fabook-shouye"></i><h5>美容</h5></li>
+            <li @click="chooseType('209')" :class="[payType == 209 ? 'active': '']"><i class="iconfont fabook-yundong"></i><h5>运动</h5></li>
+            <li @click="chooseType('210')" :class="[payType == 210 ? 'active': '']"><i class="iconfont fabook-yiliao"></i><h5>医疗</h5></li>
+          </ul>
+        </transition>
+        <transition name="opacity-fade">
+          <ul v-show="accountPay" class="chooseTypeArea" style="top: 11rem">
+            <li @click="chooseType('211')" :class="[payType == 211 ? 'active': '']"><i class="iconfont fabook-xuexi"></i><h5>学习</h5></li>
+            <li @click="chooseType('212')" :class="[payType == 212 ? 'active': '']"><i class="iconfont fabook-licai"></i><h5>理财</h5></li>
+            <li @click="chooseType('213')" :class="[payType == 213 ? 'active': '']"><i class="iconfont fabook-chongwu"></i><h5>宠物</h5></li>
+            <li @click="chooseType('299')" :class="[payType == 299 ? 'active': '']"><i class="iconfont fabook-qita"></i><h5>其他</h5></li>
           </ul>
         </transition>
         <transition name="opacity-fade">
           <ul v-show="!accountPay" class="chooseTypeArea">
-            <li><i class="iconfont fabook-gongzi"></i><h5>工资</h5></li>
-            <li><i class="iconfont fabook-jianzhi"></i><h5>兼职</h5></li>
-            <li><i class="iconfont fabook-licaishouyi"></i><h5>理财收益</h5></li>
-            <li><i class="iconfont fabook-red-packet_icon"></i><h5>人情</h5></li>
-            <li><i class="iconfont fabook-qita"></i><h5>其他</h5></li>
+            <li @click="chooseType('101')" :class="[incomeType == 101 ? 'active': '']"><i class="iconfont fabook-gongzi"></i><h5>工资</h5></li>
+            <li @click="chooseType('102')" :class="[incomeType == 102 ? 'active': '']"><i class="iconfont fabook-jianzhi"></i><h5>兼职</h5></li>
+            <li @click="chooseType('103')" :class="[incomeType == 103 ? 'active': '']"><i class="iconfont fabook-licaishouyi"></i><h5>理财收益</h5></li>
+            <li @click="chooseType('104')" :class="[incomeType == 104 ? 'active': '']"><i class="iconfont fabook-red-packet_icon"></i><h5>人情</h5></li>
+            <li @click="chooseType('199')" :class="[incomeType == 199 ? 'active': '']"><i class="iconfont fabook-qita"></i><h5>其他</h5></li>
           </ul>
         </transition>
       </div>
@@ -54,6 +62,10 @@
           <Calendar v-on:choseDay="clickDay" isHideOtherday=false v-show="isCalendarShow"></Calendar>
         </transition>
       </div>
+      <div class="lineTab clearfix">
+        <button class="fl"><i class="iconfont fabook-yulan"></i>预览</button>
+        <button class="fl"><i class="iconfont fabook-right-1"></i>保存</button>
+      </div>
     </div>
   </div>
 </template>
@@ -66,6 +78,8 @@ export default {
       accountPay: true,
       accountTitle: '',
       titleError: false,
+      payType: 201,
+      incomeType: 101,
       accountRemark: '',
       remarkError: false,
       accountDate: '',
@@ -100,6 +114,13 @@ export default {
     closeError: function () {
       this.titleError = false
       this.remarkError = false
+    },
+    chooseType: function (index) {
+      if (this.accountPay) {
+        this.payType = index
+      } else {
+        this.incomeType = index
+      }
     },
     showCalendar: function () {
       this.isCalendarShow = true
@@ -166,6 +187,7 @@ export default {
         border: 1px solid $defaultLightGray;
         width: calc( 100% - 8rem);
         padding: .5rem;
+        border-radius: .5rem;
       }
       textarea{
         margin: 0 1rem;
@@ -174,6 +196,7 @@ export default {
         border: 1px solid $defaultLightGray;
         width: calc( 100% - 2rem);
         padding: .5rem;
+        border-radius: .5rem;
       }
       h6{
         color: $defaultRed;
@@ -223,6 +246,20 @@ export default {
           h5{
             font-size: .9rem;
           }
+        }
+      }
+      button{
+        width: 40%;
+        height: 3rem;
+        border-radius: .5rem;
+        margin: 1rem 5%;
+        font-size: 1rem;
+        background: $defaultBlue;
+        color: #fff;
+        i{
+          font-size: 1.5rem;
+          margin-right: .5rem;
+          color: #fff;
         }
       }
     }
