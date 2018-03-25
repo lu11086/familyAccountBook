@@ -16,7 +16,7 @@
       </div>
       <div class="inputArea clearfix code">
         <input type="text" class="input fl" :class="[isCodeRight ? [isCodeDefault ? '':'success'] : 'error']" name="codeArea" v-model="inputCode" placeholder="请输入验证码" @blur="checkCodeFunc()" @focus="resetCodeArea()" />
-        <input type="text" class="code fr" name="codeArea" v-model="checkCode" @click="createCode()" />
+        <input type="text" class="code fr" name="codeArea" v-model="checkCode" @click="createCode()" readonly="true" />
       </div>
       <div><button class="submit" @click="registerNow()">注&emsp;册</button></div>
     </div>
