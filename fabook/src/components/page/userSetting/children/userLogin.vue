@@ -3,7 +3,7 @@
     <transition :name="transitionName">
       <router-view class="Router"></router-view>
     </transition>
-    <com-head :menuType="headType"></com-head>
+    <com-head :menuType="headType" :leftBtnClick="leftBtnClick"></com-head>
     <div class="loginArea">
       <div class="inputArea clearfix">
         <i class="iconfont fabook-yonghu fl"></i>
@@ -80,6 +80,9 @@ export default {
     },
     loginSystem: function () {
       this.$refs.toastMsg.openToast()
+    },
+    leftBtnClick: function () {
+      this.$router.goBack()
     }
   }
 }

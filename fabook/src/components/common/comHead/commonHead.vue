@@ -7,13 +7,12 @@
     <li class="fl" v-for="(tabName, index) in menuType.title" v-text="tabName" :class="[index == leftTab ? 'active':'']" @click="changeLeftHeadTab(index)" :key="index"></li>
   </ul>
   <!--左侧标签为后退按钮的-->
-  <div v-if="menuType.lTitleType == 2" class="leftHeader iconfont fabook-guanbi fl backIcon" @click="$router.goBack()"></div>
-  <div v-if="menuType.lTitleType == 3" class="leftHeader iconfont fabook-guanbi fl backIcon" @click="$router.goBackSec()"></div>
+  <div v-if="menuType.lTitleType == 2" class="leftHeader iconfont fabook-guanbi fl backIcon" @click="leftBtnClick"></div>
   <p class="leftHeader typeCenter fl" v-if="menuType.lTitleType > 1" :style="'margin-left:' + memeryData.headerLeft + 'px'">{{menuType.title[0]}}</p>
   <!--单按钮-头部右侧-->
-  <div v-if="menuType.rButtonType == 1" class="rightHeader iconfont fabook-tianjiayonghu fr"></div>
-  <div v-if="menuType.rButtonType == 2" class="rightHeader iconfont fabook-shaixuan fr"></div>
-  <div v-if="menuType.rButtonType == 4" class="rightHeader iconfont fabook-youjian fr"></div>
+  <div v-if="menuType.rButtonType == 1" class="rightHeader iconfont fabook-tianjiayonghu fr" @click="rightBtnClick"></div>
+  <div v-if="menuType.rButtonType == 2" class="rightHeader iconfont fabook-shaixuan fr" @click="rightBtnClick"></div>
+  <div v-if="menuType.rButtonType == 4" class="rightHeader iconfont fabook-renyuanguanli fr" @click="rightBtnClick"></div>
 </header>
 </template>
 
@@ -38,6 +37,18 @@ export default {
         }
       },
       required: true// 代表属性必须填
+    },
+    leftBtnClick: {
+      type: Function,
+      default: function () {
+        this.$router.goBack()
+      }
+    },
+    rightBtnClick: {
+      type: Function,
+      default: function () {
+        eventBus.$emit('rightBtnClick', 'click')
+      }
     }
   },
   mounted () {
@@ -51,6 +62,7 @@ export default {
   },
   beforeDestroy () {
     eventBus.$off('changeLeftHeadTab')
+    eventBus.$off('rightBtnClick')
   }
 }
 </script>

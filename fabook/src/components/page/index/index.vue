@@ -33,7 +33,7 @@
       </div>
     </transition>
     <transition name="rightTab">
-      <div class="pageTab" v-show="showArea == 1">
+      <div class="pageTab" v-show="showArea == 1 && memeryData.isLogin">
         <div class="lineTab clearfix">
           <div class="halfWidth fl textArea">
             <p>本月已消费总额为：</p>

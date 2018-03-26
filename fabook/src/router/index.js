@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// 首页
 import index from '@/components/page/index/index'
+// 收支列表页
 import accountList from '@/components/page/accountList/accountList'
+// 家庭圈页
 import familyInfo from '@/components/page/familyInfo/familyInfo'
+// 用户设置页
 import userSetting from '@/components/page/userSetting/userSetting'
 import userRegister from '@/components/page/userSetting/children/userRegister'
 import userLogin from '@/components/page/userSetting/children/userLogin'

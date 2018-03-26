@@ -1,10 +1,6 @@
 <template>
   <div class="pageContent">
     <com-head :menuType="headType"></com-head>
-    <div class="familyNotice">
-      <h1>家庭公告</h1>
-      <p>本月花销过大，孩儿们注意着点花。以上。</p>
-    </div>
     <ul class="chooseTab clearfix">
       <li class="threePartTab fl">
         <i class="iconfont fabook-benzhou"></i>
@@ -19,14 +15,6 @@
         <p>季度对比</p>
       </li>
       <li class="threePartTab fl">
-        <i class="iconfont fabook-renyuanguanli"></i>
-        <p>人员管理</p>
-      </li>
-      <li class="threePartTab fl">
-        <i class="iconfont fabook-bulletin"></i>
-        <p>更改公告</p>
-      </li>
-      <li class="threePartTab fl">
         <i class="iconfont fabook-linechart"></i>
         <p>家庭红线</p>
       </li>
@@ -35,14 +23,14 @@
         <p>他人方案</p>
       </li>
       <li class="threePartTab fl">
-        <i class="iconfont fabook-yijianfankui"></i>
-        <p>质疑反馈</p>
-      </li>
-      <li class="threePartTab fl">
         <i class="iconfont fabook-gengduo"></i>
         <p>更多功能</p>
       </li>
     </ul>
+    <div class="familyNotice">
+      <h1>家庭公告</h1>
+      <p>本月花销过大，孩儿们注意着点花。以上。</p>
+    </div>
     <com-foot :footerTab="3"></com-foot>
   </div>
 </template>
@@ -92,8 +80,7 @@ export default {
     }
   }
   ul.chooseTab{
-    border-top: 1px solid $defaultGray;
-    border-bottom: 1px solid $defaultGray;
+    border-bottom: 1px solid $defaultBlue;
     border-radius: .5rem;
     li{
       &.threePartTab{
@@ -116,9 +103,6 @@ export default {
           }
           &.fabook-jidu{
             font-size: 2.1rem;
-          }
-          &.fabook-bulletin{
-            font-size: 1.6rem;
           }
           &.fabook-gengduo{
             font-weight: bold;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <com-head :menuType="headType"></com-head>
+    <com-head :menuType="headType" :leftBtnClick="leftBtnClick"></com-head>
     <div class="loginArea">
       <div class="inputArea clearfix" :class="[isUserNameRight ? '' : 'error']">
         <i class="iconfont fabook-yonghu fl"></i>
@@ -32,7 +32,7 @@ export default {
     return {
       headType: {
         title: ['注册用户'],
-        lTitleType: 3,
+        lTitleType: 2,
         rButtonType: 0
       },
       username: '',
@@ -168,6 +168,9 @@ export default {
           console.log(response)
         })
       }
+    },
+    leftBtnClick: function () {
+      this.$router.goBackSec()
     }
   }
 }

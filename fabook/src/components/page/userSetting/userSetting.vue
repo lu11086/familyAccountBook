@@ -46,7 +46,7 @@ export default {
       transitionName: 'slide-right',
       userName: '点击此处登录',
       userWord: '登录后可使用更多功能',
-      userHeadImg: ''
+      userHeadImg: 'https://github.com/lu11086/familyAccountBook/blob/master/fabook/src/assets/userHeader7.png?raw=true'
     }
   },
   beforeRouteUpdate (to, from, next) {
