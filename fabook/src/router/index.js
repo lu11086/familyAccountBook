@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // 首页
 import index from '@/components/page/index/index'
+import createFamily from '@/components/page/index/children/createFamily'
 // 收支列表页
 import accountList from '@/components/page/accountList/accountList'
 // 家庭圈页
@@ -28,7 +29,14 @@ export default new Router({
     {
       path: '/index',
       name: 'home',
-      component: index
+      component: index,
+      children: [
+        {
+          path: 'createFamily',
+          name: 'createFamily',
+          component: createFamily
+        }
+      ]
     },
     {
       path: '/accountList',

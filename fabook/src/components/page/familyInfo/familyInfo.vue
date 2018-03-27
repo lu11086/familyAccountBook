@@ -38,6 +38,7 @@
 <script>
 import comHead from '@/components/common/comHead/commonHead'
 import comFoot from '@/components/common/comFoot/commonFoot'
+import eventBus from '@/components/common/eventBus.js'
 export default {
   data () {
     return {
@@ -51,6 +52,9 @@ export default {
   components: {
     comHead,
     comFoot
+  },
+  beforeDestroy () {
+    eventBus.$off('rightBtnClick')
   }
 }
 </script>

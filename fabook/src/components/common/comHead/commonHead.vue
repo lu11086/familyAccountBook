@@ -47,7 +47,8 @@ export default {
     rightBtnClick: {
       type: Function,
       default: function () {
-        eventBus.$emit('rightBtnClick', 'click')
+        console.log('click?')
+        eventBus.$emit('rightBtnClick', 'right-header-click')
       }
     }
   },
@@ -59,10 +60,6 @@ export default {
       let data = {leftTab: $index}
       eventBus.$emit('changeLeftHeadTab', data)
     }
-  },
-  beforeDestroy () {
-    eventBus.$off('changeLeftHeadTab')
-    eventBus.$off('rightBtnClick')
   }
 }
 </script>

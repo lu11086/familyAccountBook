@@ -1,5 +1,9 @@
 <template>
   <div class="pageContent">
+    <transition :name="transitionName">
+      <router-view class="Router"></router-view>
+    </transition>
+    <div v-show="isShowArea">
     <com-head :menuType="headType"></com-head>
     <transition name="leftTab">
       <div class="pageTab" v-show="showArea == 0">
@@ -33,7 +37,14 @@
       </div>
     </transition>
     <transition name="rightTab">
-      <div class="pageTab" v-show="showArea == 1 && memeryData.isLogin">
+      <div class="pageTab noFamily" v-show="showArea == 1 && !memeryData.userInfo.familyId">
+        <img src="@/assets/errorBG.jpg" />
+        <h2>请组建或加入一个家庭组</h2>
+        <h2>来使用家庭相关功能</h2>
+      </div>
+    </transition>
+    <transition name="rightTab">
+      <div class="pageTab" v-show="showArea == 1 && memeryData.userInfo.familyId">
         <div class="lineTab clearfix">
           <div class="halfWidth fl textArea">
             <p>本月已消费总额为：</p>
@@ -63,7 +74,9 @@
         </div>
       </div>
     </transition>
+    <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
     <com-foot :footerTab="0"></com-foot>
+    </div>
   </div>
 </template>
 
@@ -73,6 +86,7 @@ import comFoot from '@/components/common/comFoot/commonFoot'
 import echartPie from '@/components/common/echarts-pie/echartsPie'
 import echartBar from '@/components/common/echarts-bar/echartsBar'
 import eventBus from '@/components/common/eventBus.js'
+import toastMsg from '@/components/common/message/toastMsg'
 export default {
   data () {
     return {
@@ -81,6 +95,7 @@ export default {
         lTitleType: 1,
         rButtonType: 1
       },
+      transitionName: 'slide-right',
       echartData1: {
         id: 'single-pie'
       },
@@ -101,25 +116,54 @@ export default {
           width: this.memeryData.screenWidth - this.memeryData.remStyle + 'px'
         }
       },
-      showArea: 0
+      showArea: 0,
+      isShowArea: true,
+      toastMsg: '请先登录'
     }
+  },
+  beforeRouteUpdate (to, from, next) {
+    let _this = this
+    if (this.$router.isBack) {
+      this.transitionName = 'slide-right'
+      this.isShowArea = true
+    } else {
+      this.transitionName = 'slide-left'
+      setTimeout(function () { _this.isShowArea = false }, 550)
+    }
+    this.$router.isBack = false
+    setTimeout(function () { next() }, 50)
   },
   components: {
     comHead,
     comFoot,
     echartPie,
-    echartBar
+    echartBar,
+    toastMsg
   },
   mounted () {
     let _this = this
     eventBus.$on('changeLeftHeadTab', function (data) {
       _this.$set(_this.$data, 'showArea', data.leftTab)
     })
+    eventBus.$on('rightBtnClick', function (data) {
+      if (_this.memeryData.isLogin) {
+        _this.$router.push('/index/createFamily')
+      } else {
+        _this.toastMsg = '请先登录再使用新建家庭组功能！'
+        _this.$refs.toastMsg.openToast()
+      }
+    })
     this.$http.post(this.memeryData.serverUrl + '/users/login', {username: '18232251500', password: 'admin'}, {emulateJSON: true}).then(function (response) {
       console.log(response.body)
     }, function (response) {
       console.log(response)
     })
+  },
+  methods: {
+  },
+  beforeDestroy () {
+    eventBus.$off('changeLeftHeadTab')
+    eventBus.$off('rightBtnClick')
   }
 }
 </script>
@@ -130,6 +174,7 @@ export default {
   .pageTab{
     overflow: hidden;
     width: 100%;
+    position: relative;
     .lineTab{
       width: 100%;
       .textArea{
@@ -203,6 +248,16 @@ export default {
         width: calc( 100% - 1rem );
         height: 15rem;
         margin: 1.5rem .5rem;
+      }
+    }
+    &.noFamily{
+      img{
+        width: 60%;
+        border-radius: 100%;
+        margin: 3rem 20%;
+      }
+      h2{
+        text-align: center;
       }
     }
   }

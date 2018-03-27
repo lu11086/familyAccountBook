@@ -57,6 +57,9 @@
         <h6 v-show="remarkError" class="remark">备注不能超过100个字！</h6>
       </div>
       <div class="lineTab clearfix">
+        <span class="fl">记录金额 :</span><input type="text" name="accountAmount" placeholder="单位：人民币" v-model="accountAmount" />
+      </div>
+      <div class="lineTab clearfix">
         <span class="fl">记录时间 :</span><input type="text" name="accountDate" v-model="accountDate" @focus="showCalendar" readonly=true width="auto"/>
         <transition name="opacity-fade">
           <Calendar v-on:choseDay="clickDay" isHideOtherday=false v-show="isCalendarShow"></Calendar>
@@ -83,7 +86,8 @@ export default {
       accountRemark: '',
       remarkError: false,
       accountDate: '',
-      isCalendarShow: false
+      isCalendarShow: false,
+      accountAmount: ''
     }
   },
   mounted () {

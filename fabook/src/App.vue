@@ -27,8 +27,16 @@ export default {
     this.memeryData.serverUrl = $context.serverUrl
     this.memeryData.userInfo = {}
     this.memeryData.userInfo.sexNumber = 0
+    this.memeryData.userInfo.familyId = null
     this.memeryData.isLogin = false
     this.memeryData.isCloseNew = false
+
+    // 测试用代码
+    // this.memeryData.isLogin = true
+    this.memeryData.userInfo.tel = '18232251500'
+    this.memeryData.userInfo.email = 'lu11086@qq.com'
+    // this.memeryData.userInfo.sexNumber = 1
+    // this.memeryData.userInfo.familyId = '110'
   }
 }
 </script>

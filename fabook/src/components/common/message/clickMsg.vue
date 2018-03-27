@@ -9,8 +9,7 @@
 export default {
   data () {
     return {
-      isShow: false,
-      timeOutFunc: null
+      isShow: false
     }
   },
   props: {
@@ -27,14 +26,10 @@ export default {
     openToast () {
       this.isShow = true
       let _this = this
-      if (this.timeOutFunc) clearTimeout(this.timeOutFunc)
-      this.timeOutFunc = setTimeout(function () {
+      setTimeout(function () {
         _this.isShow = false
       }, _this.lateTime)
     }
-  },
-  beforeDestroy () {
-    if (this.timeOutFunc) clearTimeout(this.timeOutFunc)
   }
 }
 </script>
@@ -49,10 +44,10 @@ export default {
     left: 0;
     .toastMsg{
       padding: .5rem 0;
-      background: rgba(0,0,0,.7);
+      background: rgba(0,0,0,.5);
       margin: auto;
       position: absolute;
-      bottom: $footerHeight + .5rem;
+      bottom: $footerHeight;
       left: 0;
       right: 0;
       border-radius: .5rem;
