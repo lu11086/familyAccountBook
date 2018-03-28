@@ -34,13 +34,13 @@
         </div>
       </transition>
     </div>
-    <click-msg :clickMsgInfo="clickMsg" ref="clickMsg"></click-msg>
+    <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
   </div>
 </template>
 
 <script>
 import comHead from '@/components/common/comHead/commonHead'
-import clickMsg from '@/components/common/message/clickMsg'
+import toastMsg from '@/components/common/message/toastMsg'
 export default {
   data () {
     return {
@@ -49,7 +49,7 @@ export default {
         lTitleType: 2,
         rButtonType: 0
       },
-      clickMsg: '登录成功!',
+      toastMsg: '登录成功!',
       familyName: '',
       familyRemark: '',
       titleError: false,
@@ -63,7 +63,7 @@ export default {
   },
   components: {
     comHead,
-    clickMsg
+    toastMsg
   },
   mounted () {
   },

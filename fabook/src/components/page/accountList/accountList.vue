@@ -70,6 +70,10 @@ export default {
     eventBus.$on('rightBtnClick', function (data) {
       _this.isFilter = true
     })
+    eventBus.$on('dataListFilter', function (data) {
+      _this.isFilter = false
+      console.log(data)
+    })
   },
   methods: {
     closeFilter: function () {
@@ -78,6 +82,7 @@ export default {
   },
   beforeDestroy () {
     eventBus.$off('rightBtnClick')
+    eventBus.$off('dataListFilter')
   }
 }
 </script>
