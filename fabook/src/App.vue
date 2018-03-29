@@ -35,6 +35,7 @@ export default {
     // this.memeryData.isLogin = true
     this.memeryData.userInfo.tel = '18232251500'
     this.memeryData.userInfo.email = 'lu11086@qq.com'
+    this.memeryData.userInfo.userId = '18218218182'
     // this.memeryData.userInfo.sexNumber = 1
     // this.memeryData.userInfo.familyId = '110'
   }

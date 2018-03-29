@@ -66,7 +66,8 @@
         </transition>
       </div>
       <div class="lineTab clearfix">
-        <button class="fl"><i class="iconfont fabook-yulan"></i>预览</button>
+        <!--暂不开放预览功能-->
+        <!--<button class="fl"><i class="iconfont fabook-yulan"></i>预览</button>-->
         <button class="fl"><i class="iconfont fabook-right-1"></i>保存</button>
       </div>
     </div>
@@ -253,10 +254,10 @@ export default {
         }
       }
       button{
-        width: 40%;
+        width: 70%;
         height: 3rem;
         border-radius: .5rem;
-        margin: 1rem 5%;
+        margin: 1rem 15%;
         font-size: 1rem;
         background: $defaultBlue;
         color: #fff;

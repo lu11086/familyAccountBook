@@ -1,15 +1,18 @@
 <template>
   <div class="pageContent">
+    <transition :name="transitionName">
+      <router-view class="Router"></router-view>
+    </transition>
     <com-head :menuType="headType"></com-head>
     <ul class="dayList" v-for="(accountData, index) in dataList" :key="index">
       <li class="listTitle clearfix">
         <span class="fl">{{accountData.date}}</span>
         <span class="fr">收入：{{accountData.income}} &emsp;支出：{{accountData.pay}}</span>
       </li>
-      <li class="listItem clearfix" :class="[account.fabook_record_pay == 1 ? 'income' : 'pay']" v-for="(account, index) in accountData.data" :key="index">
+      <li class="listItem clearfix" :class="[account.fabook_record_pay == 0 ? 'income' : 'pay']" v-for="(account, index) in accountData.data" :key="index" @click="openDetail()">
         <i class="fl"></i>
         <span class="fl">{{account.fabook_record_title}}</span>
-        <span class="fr" v-text="[account.fabook_record_pay == 1 ? '+' : '-'] + account.fabook_record_amount"></span>
+        <span class="fr" v-text="[account.fabook_record_pay == 0 ? '+' : '-'] + account.fabook_record_amount"></span>
       </li>
     </ul>
     <transition name="rightFilter">
@@ -35,6 +38,7 @@ export default {
         lTitleType: 0,
         rButtonType: 2
       },
+      transitionName: 'slide-right',
       dataList: [],
       isFilter: false
     }
@@ -43,6 +47,15 @@ export default {
     comHead,
     comFoot,
     dataFilter
+  },
+  beforeRouteUpdate (to, from, next) {
+    if (this.$router.isBack) {
+      this.transitionName = 'slide-right'
+    } else {
+      this.transitionName = 'slide-left'
+    }
+    this.$router.isBack = false
+    setTimeout(function () { next() }, 50)
   },
   mounted () {
     this.dataList = [
@@ -61,7 +74,7 @@ export default {
         pay: 300,
         data: [
           {fabook_record_title: 'B85翻车啦，又去中关村买了块', fabook_record_pay: 1, fabook_record_amount: 170},
-          {fabook_record_title: '淘宝买了块二手B85', fabook_record_pay: 0, fabook_record_amount: 130}
+          {fabook_record_title: '淘宝买了块二手B85', fabook_record_pay: 1, fabook_record_amount: 130}
         ]
       }
     ]
@@ -78,6 +91,9 @@ export default {
   methods: {
     closeFilter: function () {
       this.isFilter = false
+    },
+    openDetail: function () {
+      this.$router.push('/accountList/detail')
     }
   },
   beforeDestroy () {

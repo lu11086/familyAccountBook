@@ -5,6 +5,7 @@ import index from '@/components/page/index/index'
 import createFamily from '@/components/page/index/children/createFamily'
 // 收支列表页
 import accountList from '@/components/page/accountList/accountList'
+import accountDetail from '@/components/page/accountList/children/accountDetail'
 // 家庭圈页
 import familyInfo from '@/components/page/familyInfo/familyInfo'
 // 用户设置页
@@ -41,7 +42,14 @@ export default new Router({
     {
       path: '/accountList',
       name: 'accountList',
-      component: accountList
+      component: accountList,
+      children: [
+        {
+          path: 'detail',
+          name: 'accountDetail',
+          component: accountDetail
+        }
+      ]
     },
     {
       path: '/familyInfo',
