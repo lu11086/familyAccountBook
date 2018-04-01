@@ -1,16 +1,19 @@
 <template>
   <div class="pageContent">
+    <transition :name="transitionName">
+      <router-view class="Router"></router-view>
+    </transition>
     <com-head :menuType="headType"></com-head>
     <ul class="chooseTab clearfix">
-      <li class="threePartTab fl">
+      <li class="threePartTab fl" @click="toDataContrast('week')">
         <i class="iconfont fabook-benzhou"></i>
         <p>周度对比</p>
       </li>
-      <li class="threePartTab fl">
+      <li class="threePartTab fl" @click="toDataContrast('month')">
         <i class="iconfont fabook-benyue"></i>
         <p>月度对比</p>
       </li>
-      <li class="threePartTab fl">
+      <li class="threePartTab fl" @click="toDataContrast('quarter')">
         <i class="iconfont fabook-jidu"></i>
         <p>季度对比</p>
       </li>
@@ -46,12 +49,33 @@ export default {
         title: ['家庭圈'],
         lTitleType: 0,
         rButtonType: 4
-      }
+      },
+      transitionName: 'slide-right'
     }
   },
   components: {
     comHead,
     comFoot
+  },
+  beforeRouteUpdate (to, from, next) {
+    if (this.$router.isBack) {
+      this.transitionName = 'slide-right'
+    } else {
+      this.transitionName = 'slide-left'
+    }
+    this.$router.isBack = false
+    setTimeout(function () { next() }, 50)
+  },
+  mounted () {
+    let _this = this
+    eventBus.$on('rightBtnClick', function (data) {
+      _this.$router.push('/familyInfo/familyCtrl')
+    })
+  },
+  methods: {
+    toDataContrast: function (type) {
+      this.$router.push('/familyInfo/contrast/' + type)
+    }
   },
   beforeDestroy () {
     eventBus.$off('rightBtnClick')

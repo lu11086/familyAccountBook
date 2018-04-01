@@ -38,7 +38,7 @@ export default {
       this.chart = echarts.init(this.$refs.myEchart)
       this.chart.setOption({
         title: {
-          text: '本月花销前五对比'
+          text: '本周花销前五对比'
         },
         tooltip: {
           trigger: 'axis',

@@ -78,7 +78,6 @@ export default {
   @import '../../../style/cssConfig.scss';
   .pageContent{
     background: #f5f5f5;
-    min-height: 100vh;
   }
   ul.settingArea{
     font-size: .9rem;

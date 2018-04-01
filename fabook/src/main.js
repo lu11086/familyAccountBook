@@ -5,8 +5,11 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import Calendar from 'vue-calendar-component'
+import { Loadmore } from 'mint-ui'
+
 Vue.use(VueResource)
 Vue.use(Calendar)
+Vue.component(Loadmore.name, Loadmore)
 
 Vue.config.productionTip = false
 Vue.prototype.memeryData = {}

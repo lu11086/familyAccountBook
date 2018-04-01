@@ -12,6 +12,7 @@
   </transition>
 </template>
 <script>
+import eventBus from '@/components/common/eventBus.js'
 export default {
   data () {
     return {
@@ -26,11 +27,11 @@ export default {
     },
     clickOk: {
       type: Function,
-      default: function () {}
+      default: function () { eventBus.$emit('clickMsgOk', 'ok') }
     },
     clickCancel: {
       type: Function,
-      default: function () {}
+      default: function () { eventBus.$emit('clickMsgCancel', 'cancel') }
     }
   },
   methods: {
@@ -40,6 +41,10 @@ export default {
     closeClick () {
       this.isShow = false
     }
+  },
+  beforeDestroy () {
+    eventBus.$off('clickMsgOk')
+    eventBus.$off('clickMsgCancel')
   }
 }
 </script>
@@ -68,6 +73,7 @@ export default {
       p{
         font-size: .9rem;
         color: #fff;
+        padding: 1rem 0;
       }
       .chooseBtn{
         position: absolute;

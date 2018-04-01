@@ -14,31 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fabook/config/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fabook/src/App.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fabook/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+            <state relative-caret-position="242">
+              <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#140#161#0" expanded="true" />
@@ -47,12 +27,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="commonFoot.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fabook/src/components/common/comFoot/commonFoot.vue">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fabook/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="43" column="22" lean-forward="false" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+            <state relative-caret-position="176">
+              <caret line="11" column="73" lean-forward="false" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+              <folding>
+                <element signature="e#349#413#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fabook/src/components/page/index/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="105" column="24" lean-forward="false" selection-start-line="105" selection-start-column="24" selection-end-line="109" selection-end-column="9" />
+              <folding>
+                <element signature="e#3500#3560#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fabook/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataContrast.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/dataContrast.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="857">
+              <caret line="105" column="8" lean-forward="false" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+              <folding>
+                <element signature="e#771#831#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,50 +76,40 @@
       <file leaf-file-name="accountList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fabook/src/components/page/accountList/accountList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state relative-caret-position="220">
+              <caret line="61" column="9" lean-forward="false" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="familyCtrl.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/familyCtrl.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="55" column="25" lean-forward="false" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
               <folding>
-                <element signature="e#1187#1247#0" expanded="true" />
+                <element signature="e#2102#2162#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/app.js">
+      <file leaf-file-name="echartsPieContrast.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fabook/src/components/common/echarts-pie/echartsPieContrast.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="24" column="3" lean-forward="false" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+            <state relative-caret-position="637">
+              <caret line="36" column="7" lean-forward="false" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="www" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/bin/www">
+      <file leaf-file-name="familyInfo.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/familyInfo.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="20" column="53" lean-forward="false" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/users.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="264">
+              <caret line="71" column="11" lean-forward="false" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -122,29 +128,47 @@
     <findStrings>
       <find>proxyTable</find>
       <find>devser</find>
+      <find>isFamilyAdmin</find>
     </findStrings>
+    <replaceStrings>
+      <replace>!isFamilyAdmin</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/fabook/build/webpack.base.conf.js" />
         <option value="$PROJECT_DIR$/fabook/index.html" />
-        <option value="$PROJECT_DIR$/fabook/src/router/index.js" />
-        <option value="$PROJECT_DIR$/fabook/src/components/common/echarts-pie/echartsPie.vue" />
         <option value="$PROJECT_DIR$/fabook/src/components/common/comFoot/commonFoot.vue" />
-        <option value="$PROJECT_DIR$/fabook/src/App.vue" />
         <option value="$PROJECT_DIR$/fabook/src/assets/iconfont/iconfont.css" />
         <option value="$PROJECT_DIR$/fabook/src/components/common/comHead/commonHead.vue" />
-        <option value="$PROJECT_DIR$/fabook/src/components/page/accountList/accountList.vue" />
         <option value="$PROJECT_DIR$/fabook/mock/router-indexData.js" />
-        <option value="$PROJECT_DIR$/fabook/src/main.js" />
         <option value="$PROJECT_DIR$/fabook/build/webpack.dev.conf.js" />
         <option value="$PROJECT_DIR$/server/bin/www" />
         <option value="$PROJECT_DIR$/server/text.js" />
         <option value="$PROJECT_DIR$/fabook/config/index.js" />
         <option value="$PROJECT_DIR$/server/app.js" />
-        <option value="$PROJECT_DIR$/fabook/src/components/page/index/index.vue" />
         <option value="$PROJECT_DIR$/server/routes/index.js" />
+        <option value="$PROJECT_DIR$/fabook/config/context.js" />
+        <option value="$PROJECT_DIR$/fabook/src/components/common/message/clickMsg.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/main.js" />
+        <option value="$PROJECT_DIR$/fabook/src/App.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/page/userSetting/userSetting.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/page/accountList/children/accountDetail.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/common/echarts-pie/echartsPie.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/page/index/index.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/common/echarts-bar/echartsBar.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/common/echarts-bar/echartsBarQuarter.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/common/echarts-bar/echartsBarWeek.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/common/echarts-pie/echartsPieContrast.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/dataContrast.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/router/index.js" />
+        <option value="$PROJECT_DIR$/fabook/src/components/page/accountList/accountList.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/page/familyInfo/familyInfo.vue" />
+        <option value="$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/familyCtrl.vue" />
       </list>
     </option>
   </component>
@@ -196,20 +220,7 @@
               <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
               <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
               <item name="fabook" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
-              <item name="fabook" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
-              <item name="fabook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
@@ -225,6 +236,24 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="echarts-bar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="echarts-pie" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
@@ -250,7 +279,74 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="accountList" type="462c0819:PsiDirectoryNode" />
+              <item name="children" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="familyInfo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="familyInfo" type="462c0819:PsiDirectoryNode" />
+              <item name="children" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
               <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+              <item name="children" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="newAccount" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="userSetting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="familyAccountBook" type="462c0819:PsiDirectoryNode" />
+              <item name="fabook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="userSetting" type="462c0819:PsiDirectoryNode" />
+              <item name="children" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="familyAccountBook" type="b2602c69:ProjectViewProjectNode" />
@@ -287,10 +383,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\毕设相关\familyAccountBook\fabook\src\components\page\familyInfo\children" />
+      <recent name="D:\毕设相关\familyAccountBook\fabook\src\components\common\echarts-pie" />
+      <recent name="D:\毕设相关\familyAccountBook\fabook\src\components\common\echarts-bar" />
+      <recent name="D:\毕设相关\familyAccountBook\fabook\src\components\page\familyInfo" />
       <recent name="D:\毕设相关\familyAccountBook\fabook\src\components\common" />
-      <recent name="D:\毕设相关\familyAccountBook\fabook\src" />
-      <recent name="D:\毕设相关\familyAccountBook\fabook\src\components" />
-      <recent name="D:\毕设相关\familyAccountBook\fabook\src\assets" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -321,11 +418,13 @@
       <workItem from="1520347889596" duration="2520000" />
       <workItem from="1520433493133" duration="1488000" />
       <workItem from="1520647727974" duration="28488000" />
+      <workItem from="1522507266529" duration="7662000" />
+      <workItem from="1522545358175" duration="15321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32496000" />
+    <option name="totallyTimeSpent" value="55479000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -338,17 +437,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18229716" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5021075" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.50421494" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916668" sideWeight="0.49789253" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295099" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -356,6 +453,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -366,10 +464,62 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/common/comFoot/commonFoot.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="43" column="4" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/accountList/accountList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+          <folding>
+            <element signature="e#1253#1313#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="3" lean-forward="false" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="53" lean-forward="false" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fabook/config/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -382,7 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1832">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -394,31 +543,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/src/components/components/page/index/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/components/page/index/index.vue" />
     <entry file="file://$PROJECT_DIR$/fabook/src/assets/iconfont/iconfont.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="4208" lean-forward="false" selection-start-line="3" selection-start-column="4208" selection-end-line="3" selection-end-column="4208" />
-          <folding>
-            <element signature="e#82#4267#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -430,19 +559,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/src/components/common/echarts-pie/echartsPie.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="47" column="35" lean-forward="false" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fabook/build/vue-loader.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -450,7 +570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1034">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -458,47 +577,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-726">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/mock/router-indexData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="5" lean-forward="false" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/text.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/mock/router-indexData.js" />
+    <entry file="file://$PROJECT_DIR$/server/text.js" />
     <entry file="file://$PROJECT_DIR$/fabook/build/build.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/build/webpack.dev.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-506">
-          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/build/webpack.base.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="72" column="6" lean-forward="false" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -506,17 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/index/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="68" column="72" lean-forward="false" selection-start-line="68" selection-start-column="72" selection-end-line="68" selection-end-column="72" />
-          <folding>
-            <element signature="e#949#1009#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -525,16 +601,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/accountList/accountList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding>
-            <element signature="e#1187#1247#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -548,16 +614,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
+        <state relative-caret-position="528">
           <caret line="24" column="3" lean-forward="false" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/src/App.vue">
+    <entry file="file://$PROJECT_DIR$/fabook/build/webpack.base.conf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="-67">
+          <caret line="72" column="6" lean-forward="false" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/build/webpack.dev.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/config/context.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/accountList/children/accountFilter.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="153" column="37" lean-forward="false" selection-start-line="153" selection-start-column="37" selection-end-line="153" selection-end-column="37" />
+          <folding>
+            <element signature="e#3972#4026#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/userLogin.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/common/message/clickMsg.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="33" column="71" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="71" />
           <folding />
         </state>
       </provider>
@@ -565,23 +705,95 @@
     <entry file="file://$PROJECT_DIR$/fabook/src/components/common/comFoot/commonFoot.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="43" column="22" lean-forward="false" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+          <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fabook/config/index.js">
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/userSetting/userSetting.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        <state relative-caret-position="374">
+          <caret line="44" column="8" lean-forward="true" selection-start-line="44" selection-start-column="8" selection-end-line="45" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/common/echarts-pie/echartsPie.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/accountList/children/accountDetail.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="63" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/common/echarts-bar/echartsBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/common/echarts-bar/echartsBarQuarter.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="40" column="20" lean-forward="false" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/common/echarts-bar/echartsBarWeek.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="40" column="19" lean-forward="false" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/index/children/createFamily.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="75" lean-forward="false" selection-start-line="2" selection-start-column="75" selection-end-line="35" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/familyInfo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/createFamily.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fabook/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+        <state relative-caret-position="242">
+          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#140#161#0" expanded="true" />
@@ -589,11 +801,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/bin/www">
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/index/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        <state relative-caret-position="264">
+          <caret line="105" column="24" lean-forward="false" selection-start-line="105" selection-start-column="24" selection-end-line="109" selection-end-column="9" />
+          <folding>
+            <element signature="e#3500#3560#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="73" lean-forward="false" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+          <folding>
+            <element signature="e#349#413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/dataContrast.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="857">
+          <caret line="105" column="8" lean-forward="false" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+          <folding>
+            <element signature="e#771#831#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/accountList/accountList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="61" column="9" lean-forward="false" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/familyInfo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="71" column="11" lean-forward="false" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/common/echarts-pie/echartsPieContrast.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="36" column="7" lean-forward="false" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fabook/src/components/page/familyInfo/children/familyCtrl.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="55" column="25" lean-forward="false" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+          <folding>
+            <element signature="e#2102#2162#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

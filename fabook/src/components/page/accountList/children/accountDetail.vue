@@ -57,6 +57,7 @@
 <script>
 import comHead from '@/components/common/comHead/commonHead'
 import clickMsg from '@/components/common/message/clickMsg'
+import eventBus from '@/components/common/eventBus.js'
 export default {
   data () {
     return {
@@ -84,6 +85,16 @@ export default {
       fabook_user_id: '18218218182',
       fabook_user_name: '测试名'
     }
+    let _this = this
+    eventBus.$on('clickMsgOk', function (data) {
+      console.log('delete')
+      _this.leftBtnClick()
+      eventBus.$emit('reloadList', 'reloadList')
+    })
+    eventBus.$on('clickMsgCancel', function (data) {
+      console.log('cancel')
+      _this.$refs.clickMsg.closeClick()
+    })
   },
   methods: {
     leftBtnClick: function () {

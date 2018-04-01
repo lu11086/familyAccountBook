@@ -4,6 +4,7 @@
       <router-view class="Router"></router-view>
     </transition>
     <com-head :menuType="headType"></com-head>
+    <mt-loadmore :top-method="loadTop" ref="loadmore">
     <ul class="dayList" v-for="(accountData, index) in dataList" :key="index">
       <li class="listTitle clearfix">
         <span class="fl">{{accountData.date}}</span>
@@ -15,6 +16,7 @@
         <span class="fr" v-text="[account.fabook_record_pay == 0 ? '+' : '-'] + account.fabook_record_amount"></span>
       </li>
     </ul>
+    </mt-loadmore>
     <transition name="rightFilter">
       <data-filter v-show="isFilter"></data-filter>
     </transition>
@@ -87,6 +89,9 @@ export default {
       _this.isFilter = false
       console.log(data)
     })
+    eventBus.$on('reloadList', function (data) {
+      _this.loadTop()
+    })
   },
   methods: {
     closeFilter: function () {
@@ -94,6 +99,9 @@ export default {
     },
     openDetail: function () {
       this.$router.push('/accountList/detail')
+    },
+    loadTop: function () {
+      this.$refs.loadmore.onTopLoaded()
     }
   },
   beforeDestroy () {
@@ -139,6 +147,19 @@ export default {
             color: $defaultGreen;
           }
         }
+      }
+    }
+  }
+  .mint-loadmore{
+    margin-top: -1.2rem;
+    text-align: center;
+    .mint-loadmore-top{
+      background: $defaultLightGray;
+      .mint-loadmore-text{
+        width: 100%;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        display: block;
       }
     }
   }

@@ -37,44 +37,46 @@ export default {
       }
       this.chart = echarts.init(this.$refs.myEchart)
       this.chart.setOption({
-        title: {
-          text: '本月花销前五对比'
-        },
         tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
+          trigger: 'item',
+          formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
-          data: ['2018年2月', '2018年3月'],
-          top: 25,
-          right: 20
-        },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
-        },
-        xAxis: {
-          type: 'category',
+          orient: 'vertical',
+          x: 'left',
           data: ['服装', '饰品', '路费', '水电费', '食品食物']
-        },
-        yAxis: {
-          type: 'value',
-          boundaryGap: [0, 0.01]
         },
         series: [
           {
-            name: '2018年2月',
-            type: 'bar',
-            data: [182, 234, 290, 1049, 1317]
-          },
-          {
-            name: '2018年3月',
-            type: 'bar',
-            data: [335, 310, 234, 135, 1548]
+            name: '支出情况',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+              normal: {
+                show: false,
+                position: 'center'
+              },
+              emphasis: {
+                show: true,
+                textStyle: {
+                  fontSize: '20',
+                  fontWeight: 'bold'
+                }
+              }
+            },
+            labelLine: {
+              normal: {
+                show: false
+              }
+            },
+            data: [
+              {value: 335, name: '服装'},
+              {value: 310, name: '饰品'},
+              {value: 234, name: '路费'},
+              {value: 135, name: '水电费'},
+              {value: 1548, name: '食品食物'}
+            ]
           }
         ]
       })

@@ -8,6 +8,8 @@ import accountList from '@/components/page/accountList/accountList'
 import accountDetail from '@/components/page/accountList/children/accountDetail'
 // 家庭圈页
 import familyInfo from '@/components/page/familyInfo/familyInfo'
+import dataContrast from '@/components/page/familyInfo/children/dataContrast'
+import familyCtrl from '@/components/page/familyInfo/children/familyCtrl'
 // 用户设置页
 import userSetting from '@/components/page/userSetting/userSetting'
 import userRegister from '@/components/page/userSetting/children/userRegister'
@@ -54,7 +56,19 @@ export default new Router({
     {
       path: '/familyInfo',
       name: 'familyInfo',
-      component: familyInfo
+      component: familyInfo,
+      children: [
+        {
+          path: 'familyCtrl',
+          name: 'familyCtrl',
+          component: familyCtrl
+        },
+        {
+          path: 'contrast/:type',
+          name: 'dataContrast',
+          component: dataContrast
+        }
+      ]
     },
     {
       path: '/userSetting',

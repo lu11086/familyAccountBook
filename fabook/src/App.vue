@@ -49,6 +49,7 @@ export default {
 .pageContent{
   padding-top: $headerHeight;
   padding-bottom: $footerHeight;
+  min-height: 100vh;
 }
 
 .Router {
