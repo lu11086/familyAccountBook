@@ -29,3 +29,15 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+document.addEventListener("plusready", function() {
+  // 注册返回按键事件
+  plus.key.addEventListener('backbutton', function() {
+    // 事件处理
+    plus.nativeUI.confirm("退出程序？", function(event) {
+      if (event.index) {
+        plus.runtime.quit();
+      }
+    }, null, ["确定", "取消"]);
+  }, false);
+});

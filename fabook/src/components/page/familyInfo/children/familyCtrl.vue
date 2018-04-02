@@ -4,37 +4,37 @@
     <div class="createFamilyArea">
       <div class="lineTab clearfix">
         <p>家庭昵称 :</p>
-        <input type="text" name="familyName" placeholder="限制10字以内；可为空；" v-model="familyName" @input="checkUnderTen" @blur="closeError" :disabled="!isFamilyAdmin"/>
+        <input type="text" name="familyName" placeholder="限制10字以内；可为空；" v-model="familyName" @input="checkUnderTen" @blur="closeError" :disabled="!memeryData.userInfo.isFamilyAdmin"/>
         <h6 v-show="titleError" class="title">昵称不能超过10个字！</h6>
       </div>
       <div class="lineTab clearfix">
         <p>家庭简介 :</p>
-        <textarea name="familyRemark" cols="30" rows="10" placeholder="限制100字以内；可为空；" v-model="familyRemark" @input="checkUnderHundred" @blur="closeError" :disabled="!isFamilyAdmin"></textarea>
+        <textarea name="familyRemark" cols="30" rows="10" placeholder="限制100字以内；可为空；" v-model="familyRemark" @input="checkUnderHundred" @blur="closeError" :disabled="!memeryData.userInfo.isFamilyAdmin"></textarea>
         <h6 v-show="remarkError" class="remark">简介不能超过100个字！</h6>
       </div>
       <div class="lineTab clearfix">
         <p>家庭公告 :</p>
-        <textarea name="familyRemark" cols="30" rows="10" placeholder="限制100字以内；可为空；" v-model="familyNotice" @input="checkUnderHundred2" @blur="closeError" :disabled="!isFamilyAdmin"></textarea>
+        <textarea name="familyRemark" cols="30" rows="10" placeholder="限制100字以内；可为空；" v-model="familyNotice" @input="checkUnderHundred2" @blur="closeError" :disabled="!memeryData.userInfo.isFamilyAdmin"></textarea>
         <h6 v-show="remarkError" class="remark">公告不能超过100个字！</h6>
       </div>
       <div class="lineTab clearfix">
         <p>家庭成员 :</p>
         <ul>
           <li class="userTab clearfix" v-for="(user, index) in userList" :key="index">
-            <span class="fl">{{user}}</span><span class="fr" :class="[index == 0 ? 'noDel' : '']" @click="index == 0 || delUser(user)" v-if="isFamilyAdmin">删除</span>
+            <span class="fl">{{user}}</span><span class="fr" :class="[index == 0 ? 'noDel' : '']" @click="index == 0 || delUser(user)" v-if="memeryData.userInfo.isFamilyAdmin">删除</span>
           </li>
-          <li class="userTab clearfix textIn" v-show="!userAdd" v-if="isFamilyAdmin">
+          <li class="userTab clearfix textIn" v-show="!userAdd" v-if="memeryData.userInfo.isFamilyAdmin">
             <span class="fl" :class="[isUserNameRight ? '' : 'error']">
               <input type="text" placeholder="请输入注册手机号/邮箱 " v-model="username" @input="checkUserNameFunc()" @focus="resetUserNameArea()" />
             </span>
             <span class="fr" @click="cancelAdd" v-show="!showClick">取消</span>
             <span class="fr sure" @click="addUserClick" v-show="showClick">确定</span>
           </li>
-          <li class="userTab clearfix add" v-show="userAdd" v-if="isFamilyAdmin"><span class="fl" @click="addIn">+</span></li>
+          <li class="userTab clearfix add" v-show="userAdd" v-if="memeryData.userInfo.isFamilyAdmin"><span class="fl" @click="addIn">+</span></li>
         </ul>
       </div>
       <transition name="opacity-fade">
-        <div class="lineTab" v-show="userList.length >= 2" v-if="isFamilyAdmin">
+        <div class="lineTab" v-show="userList.length >= 2" v-if="memeryData.userInfo.isFamilyAdmin">
           <button @click="createFamily"><i class="iconfont fabook-right-1"></i>确认保存</button>
         </div>
       </transition>
@@ -64,7 +64,6 @@ export default {
       username: '',
       isUserNameRight: true,
       showClick: false,
-      isFamilyAdmin: false,
       familyNotice: '',
       noticeError: false
     }

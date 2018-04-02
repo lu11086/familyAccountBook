@@ -110,6 +110,7 @@ export default {
       console.log('save')
       _this.leftBtnClick()
     })
+    this.username = this.memeryData.userInfo.username
   },
   methods: {
     toChangeHeader: function (type) {

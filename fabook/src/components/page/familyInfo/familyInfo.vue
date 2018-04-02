@@ -39,6 +39,7 @@
       <h1>家庭公告</h1>
       <p>本月花销过大，孩儿们注意着点花。以上。</p>
     </div>
+    <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
     <com-foot :footerTab="3"></com-foot>
   </div>
 </template>
@@ -47,6 +48,7 @@
 import comHead from '@/components/common/comHead/commonHead'
 import comFoot from '@/components/common/comFoot/commonFoot'
 import eventBus from '@/components/common/eventBus.js'
+import toastMsg from '@/components/common/message/toastMsg'
 export default {
   data () {
     return {
@@ -55,12 +57,14 @@ export default {
         lTitleType: 0,
         rButtonType: 4
       },
-      transitionName: 'slide-right'
+      transitionName: 'slide-right',
+      toastMsg: ''
     }
   },
   components: {
     comHead,
-    comFoot
+    comFoot,
+    toastMsg
   },
   beforeRouteUpdate (to, from, next) {
     if (this.$router.isBack) {
@@ -74,7 +78,12 @@ export default {
   mounted () {
     let _this = this
     eventBus.$on('rightBtnClick', function (data) {
-      _this.$router.push('/familyInfo/familyCtrl')
+      if (_this.memeryData.isLogin) {
+        _this.$router.push('/familyInfo/familyCtrl')
+      } else {
+        _this.toastMsg = '请先登录再使用家庭组管理功能！'
+        _this.$refs.toastMsg.openToast()
+      }
     })
   },
   methods: {

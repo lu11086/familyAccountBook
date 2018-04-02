@@ -11,6 +11,14 @@
         关于本软件
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
+      <li class="ceilLineTab" @click="changeLogin">
+        切换登录状态
+        <i class="iconfont fabook-iconfontjiantou4 fr"></i>
+      </li>
+      <li class="ceilLineTab" @click="changeFamilyAdmin">
+        切换家庭管理员身份
+        <i class="iconfont fabook-iconfontjiantou4 fr"></i>
+      </li>
     </ul>
     </div>
     <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
@@ -48,6 +56,39 @@ export default {
     },
     leftBtnClick: function () {
       this.$router.goBack()
+    },
+    changeLogin: function () {
+      if (!this.memeryData.isLogin) {
+        this.memeryData.isLogin = true
+        this.memeryData.userInfo.username = '测试'
+        this.memeryData.userInfo.tel = '18232251500'
+        this.memeryData.userInfo.email = 'lu11086@qq.com'
+        this.memeryData.userInfo.userId = '18218218182'
+        this.memeryData.userInfo.isFamilyAdmin = false
+        this.memeryData.userInfo.familyId = '110'
+        this.toastMsg = '切换成功！已登录'
+        this.$refs.toastMsg.openToast()
+      } else {
+        this.memeryData.isLogin = false
+        this.memeryData.userInfo.username = ''
+        this.memeryData.userInfo.tel = ''
+        this.memeryData.userInfo.email = ''
+        this.memeryData.userInfo.userId = ''
+        this.memeryData.userInfo.isFamilyAdmin = false
+        this.memeryData.userInfo.familyId = null
+        this.toastMsg = '切换成功！已退出登录'
+        this.$refs.toastMsg.openToast()
+      }
+    },
+    changeFamilyAdmin: function () {
+      if (this.memeryData.isLogin) {
+        this.memeryData.userInfo.isFamilyAdmin = !this.memeryData.userInfo.isFamilyAdmin
+        this.toastMsg = '切换成功！'
+        this.$refs.toastMsg.openToast()
+      } else {
+        this.toastMsg = '未登录状态下不得切换'
+        this.$refs.toastMsg.openToast()
+      }
     }
   }
 }
@@ -62,7 +103,6 @@ export default {
   }
   ul{
     width: 100%;
-    border-bottom: 1px solid #ddd;
     li{
       background: #fff;
       &.ceilLineTab{
