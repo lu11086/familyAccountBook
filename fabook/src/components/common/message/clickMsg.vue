@@ -71,7 +71,7 @@ export default {
       border-radius: .5rem;
       text-align: center;
       p{
-        font-size: .9rem;
+        font-size: 1rem;
         color: #fff;
         padding: 1rem 0;
       }
@@ -87,6 +87,7 @@ export default {
           height: 100%;
           background: transparent;
           color: #fff;
+          font-size: 1rem;
           &:first-child{
             border-right: 1px solid #fff;
           }

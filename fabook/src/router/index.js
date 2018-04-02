@@ -10,10 +10,17 @@ import accountDetail from '@/components/page/accountList/children/accountDetail'
 import familyInfo from '@/components/page/familyInfo/familyInfo'
 import dataContrast from '@/components/page/familyInfo/children/dataContrast'
 import familyCtrl from '@/components/page/familyInfo/children/familyCtrl'
+import familyRedLine from '@/components/page/familyInfo/children/redLine'
+import moreInterface from '@/components/page/familyInfo/children/interface'
+import otherPlan from '@/components/page/familyInfo/children/otherPlan'
 // 用户设置页
 import userSetting from '@/components/page/userSetting/userSetting'
 import userRegister from '@/components/page/userSetting/children/userRegister'
 import userLogin from '@/components/page/userSetting/children/userLogin'
+import userRedLine from '@/components/page/userSetting/children/redLine'
+import fixedCtrl from '@/components/page/userSetting/children/fixedCtrl'
+import appSetting from '@/components/page/userSetting/children/appSetting'
+import userInfo from '@/components/page/userSetting/children/userInfo'
 
 Router.prototype.goBack = function () {
   this.isBack = true
@@ -67,6 +74,21 @@ export default new Router({
           path: 'contrast/:type',
           name: 'dataContrast',
           component: dataContrast
+        },
+        {
+          path: 'redLine',
+          name: 'familyRedLine',
+          component: familyRedLine
+        },
+        {
+          path: 'otherPlan',
+          name: 'otherPlan',
+          component: otherPlan
+        },
+        {
+          path: 'interface',
+          name: 'interface',
+          component: moreInterface
         }
       ]
     },
@@ -86,6 +108,26 @@ export default new Router({
               component: userRegister
             }
           ]
+        },
+        {
+          path: 'userInfo',
+          name: 'userInfo',
+          component: userInfo
+        },
+        {
+          path: 'redLine',
+          name: 'userRedLine',
+          component: userRedLine
+        },
+        {
+          path: 'fixedCtrl',
+          name: 'fixedCtrl',
+          component: fixedCtrl
+        },
+        {
+          path: 'appSetting',
+          name: 'appSetting',
+          component: appSetting
         }
       ]
     },

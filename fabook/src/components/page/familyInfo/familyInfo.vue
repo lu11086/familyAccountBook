@@ -4,7 +4,12 @@
       <router-view class="Router"></router-view>
     </transition>
     <com-head :menuType="headType"></com-head>
-    <ul class="chooseTab clearfix">
+    <div class="pageTab noFamily" v-show="!memeryData.userInfo.familyId">
+      <img src="@/assets/errorBG.jpg" />
+      <h2>请组建或加入一个家庭组</h2>
+      <h2>来使用家庭相关功能</h2>
+    </div>
+    <ul class="chooseTab clearfix" v-show="memeryData.userInfo.familyId">
       <li class="threePartTab fl" @click="toDataContrast('week')">
         <i class="iconfont fabook-benzhou"></i>
         <p>周度对比</p>
@@ -17,20 +22,20 @@
         <i class="iconfont fabook-jidu"></i>
         <p>季度对比</p>
       </li>
-      <li class="threePartTab fl">
+      <li class="threePartTab fl" @click="toRedLine">
         <i class="iconfont fabook-linechart"></i>
         <p>家庭红线</p>
       </li>
-      <li class="threePartTab fl">
+      <li class="threePartTab fl" @click="toOtherPlan">
         <i class="iconfont fabook-toufangfangan"></i>
         <p>他人方案</p>
       </li>
-      <li class="threePartTab fl">
+      <li class="threePartTab fl" @click="toInterface">
         <i class="iconfont fabook-gengduo"></i>
         <p>更多功能</p>
       </li>
     </ul>
-    <div class="familyNotice">
+    <div class="familyNotice" v-show="memeryData.userInfo.familyId">
       <h1>家庭公告</h1>
       <p>本月花销过大，孩儿们注意着点花。以上。</p>
     </div>
@@ -75,6 +80,15 @@ export default {
   methods: {
     toDataContrast: function (type) {
       this.$router.push('/familyInfo/contrast/' + type)
+    },
+    toRedLine: function () {
+      this.$router.push('/familyInfo/redLine')
+    },
+    toOtherPlan: function () {
+      this.$router.push('/familyInfo/otherPlan')
+    },
+    toInterface: function () {
+      this.$router.push('/familyInfo/interface')
     }
   },
   beforeDestroy () {
@@ -105,6 +119,16 @@ export default {
     p{
       color: #fff;
       font-size: .9rem;
+    }
+  }
+  .noFamily{
+    img{
+      width: 60%;
+      border-radius: 100%;
+      margin: 3rem 20%;
+    }
+    h2{
+      text-align: center;
     }
   }
   ul.chooseTab{

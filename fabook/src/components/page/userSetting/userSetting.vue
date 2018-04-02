@@ -10,20 +10,20 @@
         <img :src="userHeadImg" alt="用户头像" class="fl" v-show="memeryData.isLogin">
         <div class="userTab fl" >
           <p class="userName" v-text="userName"></p>
-          <p v-text="userWord"></p>
+          <p class="userRemark" v-text="userWord"></p>
         </div>
         <i class="iconfont fabook-bianji fr" @click="toEditUserInfo()" v-show="memeryData.isLogin"></i>
       </li>
       <li class="blank"></li>
-      <li class="lineTab">
+      <li class="lineTab" @click="tofixedCtrl">
         固定收支
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
-      <li class="lineTab">
+      <li class="lineTab" @click="toRedLine">
         消费红线
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
-      <li class="lineTab">
+      <li class="lineTab" @click="toAppSetting">
         软件设置
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
@@ -35,6 +35,7 @@
 <script>
 import comHead from '@/components/common/comHead/commonHead'
 import comFoot from '@/components/common/comFoot/commonFoot'
+const imgDefault = require('@/assets/userHeader7.png')
 export default {
   data () {
     return {
@@ -46,7 +47,7 @@ export default {
       transitionName: 'slide-right',
       userName: '点击此处登录',
       userWord: '登录后可使用更多功能',
-      userHeadImg: 'https://github.com/lu11086/familyAccountBook/blob/master/fabook/src/assets/userHeader7.png?raw=true'
+      userHeadImg: imgDefault
     }
   },
   beforeRouteUpdate (to, from, next) {
@@ -68,6 +69,15 @@ export default {
     },
     userLogin: function () {
       if (!this.memeryData.isLogin) this.$router.push('/userSetting/userLogin')
+    },
+    toRedLine: function () {
+      this.$router.push('/userSetting/redLine')
+    },
+    tofixedCtrl: function () {
+      this.$router.push('/userSetting/fixedCtrl')
+    },
+    toAppSetting: function () {
+      this.$router.push('/userSetting/appSetting')
     }
   }
 }
@@ -103,6 +113,11 @@ export default {
           line-height: 2.3rem;
           p.userName{
             font-size: 1rem;
+          }
+          p.userRemark{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         }
         i{

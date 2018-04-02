@@ -6,9 +6,14 @@
         <echart-pie :echartData="echartData1"></echart-pie>
       </div>
       <p>
-        总收入相比上月变化为：{{payChange}}
+        {{timeType}}总收入为：{{sumIncome}}
         <br />
-        总支出相比上月变化为：{{incomeChange}}
+        总收入相比上月变化为：{{incomeChange}}
+        <br />
+        <br />
+        {{timeType}}总支出为：{{sumPay}}
+        <br />
+        总支出相比上月变化为：{{payChange}}
       </p>
       <div class="echartsArea2" v-if="dateType == 0">
         <echart-bar-week :echartData="echartData2"></echart-bar-week>
@@ -53,7 +58,10 @@ export default {
       dateType: 0,
       firstTitle: '',
       payChange: '100%',
-      incomeChange: '100%'
+      incomeChange: '100%',
+      sumIncome: 3000,
+      sumPay: 1000,
+      timeType: ''
     }
   },
   components: {
@@ -68,14 +76,17 @@ export default {
       this.dateType = 0
       this.headType.title = ['周度对比']
       this.firstTitle = '本周各类花销占比'
+      this.timeType = '本周'
     } else if (this.$route.params.type === 'month') {
       this.dateType = 1
       this.headType.title = ['月度对比']
       this.firstTitle = '本月各类花销占比'
+      this.timeType = '本月'
     } else if (this.$route.params.type === 'quarter') {
       this.dateType = 2
       this.headType.title = ['季度对比']
       this.firstTitle = '本季度各类花销占比'
+      this.timeType = '本季度'
     }
   },
   methods: {
@@ -100,7 +111,7 @@ export default {
   }
   .echartsArea2{
     width: 90vw;
-    margin: 0 5vw;
+    margin: 1rem 5vw;
     height: 18rem;
   }
 </style>

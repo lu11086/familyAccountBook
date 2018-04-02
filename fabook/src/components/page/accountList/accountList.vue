@@ -151,17 +151,7 @@ export default {
     }
   }
   .mint-loadmore{
-    margin-top: -1.2rem;
-    text-align: center;
-    .mint-loadmore-top{
-      background: $defaultLightGray;
-      .mint-loadmore-text{
-        width: 100%;
-        height: 1.2rem;
-        line-height: 1.2rem;
-        display: block;
-      }
-    }
+    height: calc( 100vh - 5.7rem );
   }
   .coverMask{
     width: 100vw;

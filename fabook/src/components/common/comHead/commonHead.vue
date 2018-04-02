@@ -13,6 +13,7 @@
   <div v-if="menuType.rButtonType == 1" class="rightHeader iconfont fabook-tianjiayonghu fr" @click="rightBtnClick"></div>
   <div v-if="menuType.rButtonType == 2" class="rightHeader iconfont fabook-shaixuan fr" @click="rightBtnClick"></div>
   <div v-if="menuType.rButtonType == 4" class="rightHeader iconfont fabook-renyuanguanli fr" @click="rightBtnClick"></div>
+  <div v-if="menuType.rButtonType == 5" class="rightHeader iconfont fabook-right-1 fr" @click="rightBtnClick"></div>
 </header>
 </template>
 
@@ -113,6 +114,9 @@ export default {
       border: none;
       color: #fff;
       font-size: 1.4rem;
+      &.fabook-right-1{
+        font-size: 1.6rem;
+      }
     }
   }
 </style>

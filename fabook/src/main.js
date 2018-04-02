@@ -5,11 +5,19 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import Calendar from 'vue-calendar-component'
+// eslint-disable-next-line
 import { Loadmore } from 'mint-ui'
+// eslint-disable-next-line
+import { Range } from 'mint-ui'
+// eslint-disable-next-line
+import { Radio } from 'mint-ui'
+import 'mint-ui/lib/style.css'
 
 Vue.use(VueResource)
 Vue.use(Calendar)
 Vue.component(Loadmore.name, Loadmore)
+Vue.component(Range.name, Range)
+Vue.component(Radio.name, Radio)
 
 Vue.config.productionTip = false
 Vue.prototype.memeryData = {}
