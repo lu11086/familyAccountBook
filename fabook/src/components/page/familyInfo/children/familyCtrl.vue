@@ -13,6 +13,11 @@
         <h6 v-show="remarkError" class="remark">简介不能超过100个字！</h6>
       </div>
       <div class="lineTab clearfix">
+        <p>家庭公告 :</p>
+        <textarea name="familyRemark" cols="30" rows="10" placeholder="限制100字以内；可为空；" v-model="familyNotice" @input="checkUnderHundred2" @blur="closeError" :disabled="!isFamilyAdmin"></textarea>
+        <h6 v-show="remarkError" class="remark">公告不能超过100个字！</h6>
+      </div>
+      <div class="lineTab clearfix">
         <p>家庭成员 :</p>
         <ul>
           <li class="userTab clearfix" v-for="(user, index) in userList" :key="index">
@@ -59,7 +64,9 @@ export default {
       username: '',
       isUserNameRight: true,
       showClick: false,
-      isFamilyAdmin: false
+      isFamilyAdmin: false,
+      familyNotice: '',
+      noticeError: false
     }
   },
   components: {
@@ -81,9 +88,16 @@ export default {
         this.remarkError = true
       }
     },
+    checkUnderHundred2: function () {
+      if (this.familyNotice.length > 100) {
+        this.familyNotice = this.familyNotice.substr(0, 100)
+        this.noticeError = true
+      }
+    },
     closeError: function () {
       this.titleError = false
       this.remarkError = false
+      this.noticeError = false
     },
     addIn: function () {
       this.userAdd = false

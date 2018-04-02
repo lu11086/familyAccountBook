@@ -16,7 +16,7 @@
       </div>
       <div><button class="submit" @click="loginSystem()">登&emsp;录</button></div>
       <div class="specialType clearfix">
-        <span class="fl">忘记密码？</span>
+        <span class="fl" @click="toForgetPwd()">忘记密码？</span>
         <span class="fr" @click="userRegister()">立即注册</span>
       </div>
     </div>
@@ -77,6 +77,9 @@ export default {
     },
     userRegister: function () {
       this.$router.push('/userSetting/userLogin/userRegister')
+    },
+    toForgetPwd: function () {
+      this.$router.push('/userSetting/userLogin/forget')
     },
     loginSystem: function () {
       this.$refs.toastMsg.openToast()

@@ -21,6 +21,7 @@ import userRedLine from '@/components/page/userSetting/children/redLine'
 import fixedCtrl from '@/components/page/userSetting/children/fixedCtrl'
 import appSetting from '@/components/page/userSetting/children/appSetting'
 import userInfo from '@/components/page/userSetting/children/userInfo'
+import forgetPwd from '@/components/page/userSetting/children/forgetPwd'
 
 Router.prototype.goBack = function () {
   this.isBack = true
@@ -106,6 +107,11 @@ export default new Router({
               path: 'userRegister',
               name: 'userRegister',
               component: userRegister
+            },
+            {
+              path: 'forget',
+              name: 'forgetPwd',
+              component: forgetPwd
             }
           ]
         },

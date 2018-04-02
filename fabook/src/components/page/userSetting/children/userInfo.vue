@@ -11,23 +11,43 @@
           更改昵称
           <input type="text" v-model="username" placeholder="不得超过10个字" oninput="if(value.length > 10) value=value.slice(0,10)"/>
         </li>
-        <li class="ceilLineTab" @click="toChangeSex(true)">
+        <li class="ceilLineTab" @click="toChangeSex">
           更改性别
           <span class="fr">{{sexNumber}}</span>
         </li>
         <transition name="opacity-fade">
-          <li v-show="changeSex" @click="toChangeSex(false)">
+          <li v-show="changeSex" @click="toChangeSex">
             <mt-radio v-model="sexNumber" :options="['男', '女']"></mt-radio>
           </li>
         </transition>
-        <li class="ceilLineTab" @click="toChangeRemark(true)">
+        <li class="ceilLineTab" @click="toChangeRemark">
           更改备注
           <i class="iconfont fabook-iconfontjiantou4 fr"></i>
         </li>
         <transition name="opacity-fade">
           <li v-show="changeRemark">
-            <textarea id="" cols="30" rows="5" v-model="userRemark"></textarea>
-            <button @click="toChangeRemark(false)">保存</button>
+            <textarea cols="30" rows="5" v-model="userRemark"></textarea>
+            <button @click="toChangeRemark">保存</button>
+          </li>
+        </transition>
+        <li class="ceilLineTab" @click="toChangeQuestion">
+          设置密保问题
+          <i class="iconfont fabook-iconfontjiantou4 fr"></i>
+        </li>
+        <transition name="opacity-fade">
+          <li v-show="changeQusetion">
+            <textarea cols="30" rows="2" v-model="question"></textarea>
+            <button @click="toChangeQuestion">保存</button>
+          </li>
+        </transition>
+        <li class="ceilLineTab" @click="toChangeAnswer">
+          设置密保答案
+          <i class="iconfont fabook-iconfontjiantou4 fr"></i>
+        </li>
+        <transition name="opacity-fade">
+          <li v-show="changeAnswer">
+            <textarea cols="30" rows="2" v-model="answer"></textarea>
+            <button @click="toChangeAnswer">保存</button>
           </li>
         </transition>
       </ul>
@@ -73,7 +93,11 @@ export default {
       sexNumber: '男',
       changeSex: false,
       changeRemark: false,
-      userRemark: ''
+      userRemark: '',
+      changeQusetion: false,
+      question: '',
+      changeAnswer: false,
+      answer: ''
     }
   },
   components: {
@@ -94,15 +118,17 @@ export default {
     changeUserHeaderImg: function (index) {
       this.userHeaderIndex = index
     },
-    toChangeSex: function (type) {
-      this.changeSex = type
+    toChangeSex: function () {
+      this.changeSex = !this.changeSex
     },
-    toChangeRemark: function (type) {
-      this.changeRemark = type
+    toChangeRemark: function () {
+      this.changeRemark = !this.changeRemark
     },
-    showApp: function () {
-      this.toastMsg = '版本号  v0.4.2'
-      this.$refs.toastMsg.openToast()
+    toChangeQuestion: function () {
+      this.changeQusetion = !this.changeQusetion
+    },
+    toChangeAnswer: function () {
+      this.changeAnswer = !this.changeAnswer
     },
     leftBtnClick: function () {
       this.$router.goBack()
