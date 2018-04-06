@@ -7,10 +7,10 @@
     <ul class="settingArea">
       <li class="userInfo clearfix" @click="userLogin()">
         <img src="@/assets/userDefault.png" alt="用户头像" class="fl" v-show="!memeryData.isLogin">
-        <img :src="userHeadImg" alt="用户头像" class="fl" v-show="memeryData.isLogin">
+        <img :src="userHeadImg[memeryData.userInfo.userHeaderIndex]" alt="用户头像" class="fl" v-show="memeryData.isLogin">
         <div class="userTab fl" >
-          <p class="userName" v-text="userName"></p>
-          <p class="userRemark" v-text="userWord"></p>
+          <p class="userName" v-text="memeryData.userInfo.username"></p>
+          <p class="userRemark" v-text="memeryData.userInfo.userRemark"></p>
         </div>
         <i class="iconfont fabook-bianji fr" @click="toEditUserInfo()" v-show="memeryData.isLogin"></i>
       </li>
@@ -35,7 +35,18 @@
 <script>
 import comHead from '@/components/common/comHead/commonHead'
 import comFoot from '@/components/common/comFoot/commonFoot'
-const imgDefault = require('@/assets/userHeader7.png')
+const headerImg1 = require('@/assets/userHeader1.png')
+const headerImg2 = require('@/assets/userHeader2.png')
+const headerImg3 = require('@/assets/userHeader3.png')
+const headerImg4 = require('@/assets/userHeader4.png')
+const headerImg5 = require('@/assets/userHeader5.png')
+const headerImg6 = require('@/assets/userHeader6.png')
+const headerImg7 = require('@/assets/userHeader7.png')
+const headerImg8 = require('@/assets/userHeader8.png')
+const headerImg9 = require('@/assets/userHeader9.png')
+const headerImg10 = require('@/assets/userHeader10.png')
+const headerImg11 = require('@/assets/userHeader11.png')
+const headerImg12 = require('@/assets/userHeader12.png')
 export default {
   data () {
     return {
@@ -45,9 +56,7 @@ export default {
         rButtonType: 0
       },
       transitionName: 'slide-right',
-      userName: '点击此处登录',
-      userWord: '登录后可使用更多功能',
-      userHeadImg: imgDefault
+      userHeadImg: [headerImg1, headerImg2, headerImg3, headerImg4, headerImg5, headerImg6, headerImg7, headerImg8, headerImg9, headerImg10, headerImg11, headerImg12]
     }
   },
   beforeRouteUpdate (to, from, next) {

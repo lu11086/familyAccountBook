@@ -105,12 +105,17 @@ export default {
     toastMsg
   },
   mounted () {
-    let _this = this
-    eventBus.$on('rightBtnClick', function (data) {
-      console.log('save')
-      _this.leftBtnClick()
-    })
+    eventBus.$on('rightBtnClick', this.saveUserInfo)
     this.username = this.memeryData.userInfo.username
+    this.userHeaderIndex = this.memeryData.userInfo.userHeaderIndex
+    if (this.memeryData.userInfo.sexNumber === 0) {
+      this.sexNumber = '男'
+    } else {
+      this.sexNumber = '女'
+    }
+    if (this.memeryData.userInfo.userRemark) this.userRemark = this.memeryData.userInfo.userRemark
+    if (this.memeryData.userInfo.rememberQuestion) this.question = this.memeryData.userInfo.rememberQuestion
+    if (this.memeryData.userInfo.rememberAnswer) this.answer = this.memeryData.userInfo.rememberAnswer
   },
   methods: {
     toChangeHeader: function (type) {
@@ -133,6 +138,43 @@ export default {
     },
     leftBtnClick: function () {
       this.$router.goBack()
+    },
+    saveUserInfo: function () {
+      this.memeryData.userInfo.username = this.username
+      this.memeryData.userInfo.userHeaderIndex = this.userHeaderIndex
+      if (this.sexNumber === '男') {
+        this.memeryData.userInfo.sexNumber = 0
+      } else {
+        this.memeryData.userInfo.sexNumber = 1
+      }
+      if (this.userRemark) this.memeryData.userInfo.userRemark = this.userRemark
+      if (this.question) this.memeryData.userInfo.rememberQuestion = this.question
+      if (this.answer) this.memeryData.userInfo.rememberAnswer = this.answer
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/users/changeInfo', {
+        'userId': this.memeryData.userInfo.userId,
+        'username': this.username,
+        'headerImg': this.userHeaderIndex,
+        'sexNum': this.memeryData.userInfo.sexNumber,
+        'userRemark': this.userRemark,
+        'question': this.question,
+        'answer': this.answer
+      }, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          _this.toastMsg = '保存成功！'
+          _this.$refs.toastMsg.openToast()
+          setTimeout(function () {
+            _this.leftBtnClick()
+          }, 1000)
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '保存失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     }
   },
   beforeDestroy () {

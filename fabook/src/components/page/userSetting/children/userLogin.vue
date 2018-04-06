@@ -82,7 +82,43 @@ export default {
       this.$router.push('/userSetting/userLogin/forget')
     },
     loginSystem: function () {
-      this.$refs.toastMsg.openToast()
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/users/login', {
+        'username': this.username,
+        'password': this.password
+      }, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          _this.toastMsg = '登录成功！'
+          _this.$refs.toastMsg.openToast()
+          _this.memeryData.isLogin = true
+          let data = response.body.data[0]
+          _this.memeryData.userInfo.username = data.fabook_name
+          _this.memeryData.userInfo.tel = data.fabook_tel
+          _this.memeryData.userInfo.email = data.fabook_email
+          _this.memeryData.userInfo.userId = data.fabook_id
+          _this.memeryData.userInfo.userRemark = data.fabook_remark
+          _this.memeryData.userInfo.sexNumber = parseInt(data.fabook_sex)
+          _this.memeryData.userInfo.isFamilyAdmin = parseInt(data.family_admin)
+          _this.memeryData.userInfo.userHeaderIndex = parseInt(data.header_img)
+          _this.memeryData.userInfo.familyId = data.family_id
+          _this.memeryData.userInfo.fixedIncome = data.fixed_income
+          _this.memeryData.userInfo.fixedPay = data.fixed_pay
+          _this.memeryData.userInfo.redLine = data.red_line
+          _this.memeryData.userInfo.rememberQuestion = data.remember_question
+          _this.memeryData.userInfo.rememberAnswer = data.remember_answer
+          console.log(_this.memeryData.userInfo)
+          setTimeout(function () {
+            _this.$router.goBack()
+          }, 1000)
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '登录失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     },
     leftBtnClick: function () {
       this.$router.goBack()

@@ -48,7 +48,6 @@ export default {
     rightBtnClick: {
       type: Function,
       default: function () {
-        console.log('click?')
         eventBus.$emit('rightBtnClick', 'right-header-click')
       }
     }

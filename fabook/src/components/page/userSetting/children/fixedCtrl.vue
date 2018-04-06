@@ -7,7 +7,7 @@
       <p>每月固定支出：（如话费）</p>
       <input type="number" v-model="fixedPay" />
       <p class="remark">说明：<br />固定收支会在每个月月初自动追加记录，省略用户每个月都要记录相同项目的过程</p>
-      <button @click="saveRedLine">保存设置</button>
+      <button @click="saveFixedCtrl">保存设置</button>
     </div>
     <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
   </div>
@@ -34,21 +34,34 @@ export default {
     toastMsg
   },
   mounted () {
+    this.fixedIncome = this.memeryData.userInfo.fixedIncome
+    this.fixedPay = this.memeryData.userInfo.fixedPay
   },
   methods: {
-    changeType: function (type) {
-      this.isNumber = type
-    },
-    saveRedLine: function () {
-      let params = {}
-      if (this.isNumber) {
-        params.isNumber = true
-        params.redLineValue = this.redLineValue
-      } else {
-        params.isNumber = false
-        params.rangeValue = this.rangeValue
-      }
-      console.log(params)
+    saveFixedCtrl: function () {
+      this.memeryData.userInfo.fixedIncome = this.fixedIncome
+      this.memeryData.userInfo.fixedPay = this.fixedPay
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/users/changeFixedCtrl', {
+        'userId': this.memeryData.userInfo.userId,
+        'fixedIncome': this.fixedIncome,
+        'fixedPay': this.fixedPay
+      }, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          _this.toastMsg = '保存成功！'
+          _this.$refs.toastMsg.openToast()
+          setTimeout(function () {
+            _this.leftBtnClick()
+          }, 1000)
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '保存失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     },
     leftBtnClick: function () {
       this.$router.goBack()

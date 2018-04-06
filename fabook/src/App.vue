@@ -25,11 +25,16 @@ export default {
     this.memeryData.screenWidth = windowWidth
     this.memeryData.headerLeft = windowWidth / 2 - 4.5 * this.memeryData.remStyle
     this.memeryData.serverUrl = $context.serverUrl
+    this.memeryData.isLogin = false
+    this.memeryData.isCloseNew = false
     this.memeryData.userInfo = {}
     this.memeryData.userInfo.sexNumber = 0
     this.memeryData.userInfo.familyId = null
-    this.memeryData.isLogin = false
-    this.memeryData.isCloseNew = false
+    this.memeryData.userInfo.username = '点击此处登录'
+    this.memeryData.userInfo.userRemark = '登录后可使用更多功能'
+    this.memeryData.userInfo.redLine = '80%'
+    this.memeryData.userInfo.fixedIncome = 0
+    this.memeryData.userInfo.fixedPay = 0
   }
 }
 </script>

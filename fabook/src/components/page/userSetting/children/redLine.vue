@@ -32,7 +32,7 @@ export default {
       },
       toastMsg: '保存成功!',
       isNumber: false,
-      rangeValue: 80,
+      rangeValue: 0,
       redLineValue: 0
     }
   },
@@ -41,6 +41,13 @@ export default {
     toastMsg
   },
   mounted () {
+    if (this.memeryData.userInfo.redLine.indexOf('%') > -1) {
+      this.isNumber = false
+      this.rangeValue = parseInt(this.memeryData.userInfo.redLine.split('%')[0])
+    } else {
+      this.isNumber = true
+      this.redLineValue = this.memeryData.userInfo.redLine
+    }
   },
   methods: {
     changeType: function (type) {
@@ -48,14 +55,30 @@ export default {
     },
     saveRedLine: function () {
       let params = {}
+      params.userId = this.memeryData.userInfo.userId
       if (this.isNumber) {
-        params.isNumber = true
-        params.redLineValue = this.redLineValue
+        params.redLine = this.redLineValue
       } else {
-        params.isNumber = false
-        params.rangeValue = this.rangeValue
+        params.redLine = this.rangeValue + '%'
       }
-      console.log(params)
+      this.memeryData.userInfo.redLine = params.redLine
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/users/changeRedLine', params, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          _this.toastMsg = '保存成功！'
+          _this.$refs.toastMsg.openToast()
+          setTimeout(function () {
+            _this.leftBtnClick()
+          }, 1000)
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '保存失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     },
     leftBtnClick: function () {
       this.$router.goBack()
