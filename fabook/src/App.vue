@@ -35,6 +35,8 @@ export default {
     this.memeryData.userInfo.redLine = '80%'
     this.memeryData.userInfo.fixedIncome = 0
     this.memeryData.userInfo.fixedPay = 0
+    this.memeryData.familyInfo = {}
+    this.memeryData.familyInfo.familyNotice = '暂无公告'
   }
 }
 </script>

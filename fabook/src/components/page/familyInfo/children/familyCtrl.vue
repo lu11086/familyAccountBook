@@ -35,7 +35,7 @@
       </div>
       <transition name="opacity-fade">
         <div class="lineTab" v-show="userList.length >= 2" v-if="memeryData.userInfo.isFamilyAdmin">
-          <button @click="createFamily"><i class="iconfont fabook-right-1"></i>确认保存</button>
+          <button @click="changeFamily"><i class="iconfont fabook-right-1"></i>确认修改</button>
         </div>
       </transition>
     </div>
@@ -59,7 +59,7 @@ export default {
       familyRemark: '',
       titleError: false,
       remarkError: false,
-      userList: ['18232251500'],
+      userList: [],
       userAdd: true,
       username: '',
       isUserNameRight: true,
@@ -73,6 +73,10 @@ export default {
     toastMsg
   },
   mounted () {
+    this.familyName = this.memeryData.familyInfo.familyName
+    this.familyRemark = this.memeryData.familyInfo.familyRemark
+    this.userList = this.memeryData.familyInfo.familyList
+    this.familyNotice = this.memeryData.familyInfo.familyNotice
   },
   methods: {
     checkUnderTen: function () {
@@ -147,8 +151,38 @@ export default {
     leftBtnClick: function () {
       this.$router.goBack()
     },
-    createFamily: function () {
-      console.log('new family')
+    changeFamily: function () {
+      this.memeryData.familyInfo.familyName = this.familyName
+      this.memeryData.familyInfo.familyRemark = this.familyRemark
+      this.memeryData.familyInfo.familyList = this.userList
+      this.memeryData.familyInfo.familyNotice = this.familyNotice
+      let userList = ''
+      for (let i in this.userList) {
+        userList += this.userList[i] + ';'
+      }
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/family/changeFamily', {
+        'id': this.memeryData.userInfo.familyId,
+        'name': this.familyName,
+        'remark': this.familyRemark,
+        'userList': userList,
+        'notice': this.familyNotice
+      }, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          _this.toastMsg = '修改成功！'
+          _this.$refs.toastMsg.openToast()
+          setTimeout(function () {
+            _this.leftBtnClick()
+          }, 1000)
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '保存失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     }
   }
 }

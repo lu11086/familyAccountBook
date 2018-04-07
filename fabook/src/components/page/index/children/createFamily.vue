@@ -25,7 +25,7 @@
             <span class="fr" @click="cancelAdd" v-show="!showClick">取消</span>
             <span class="fr sure" @click="addUserClick" v-show="showClick">确定</span>
           </li>
-          <li class="userTab clearfix add" v-show="userAdd"><span class="fl" @click="addIn">+</span></li>
+          <li class="userTab clearfix add" v-show="userAdd && userList.length < 10"><span class="fl" @click="addIn">+</span></li>
         </ul>
       </div>
       <transition name="opacity-fade">
@@ -54,7 +54,7 @@ export default {
       familyRemark: '',
       titleError: false,
       remarkError: false,
-      userList: ['18232251500'],
+      userList: [],
       userAdd: true,
       username: '',
       isUserNameRight: true,
@@ -66,6 +66,8 @@ export default {
     toastMsg
   },
   mounted () {
+    if (this.memeryData.userInfo.tel) this.userList.push(this.memeryData.userInfo.tel)
+    if (this.memeryData.userInfo.email) this.userList.push(this.memeryData.userInfo.email)
   },
   methods: {
     checkUnderTen: function () {
@@ -134,7 +136,31 @@ export default {
       this.$router.goBack()
     },
     createFamily: function () {
-      console.log('new family')
+      let userList = ''
+      for (let i in this.userList) {
+        userList += this.userList[i] + ';'
+      }
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/family/createFamily', {
+        'name': this.familyName,
+        'userList': userList,
+        'remark': this.familyRemark
+      }, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          _this.toastMsg = '创建成功！请等待家庭成员确认'
+          _this.$refs.toastMsg.openToast()
+          setTimeout(function () {
+            _this.leftBtnClick()
+          }, 1000)
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '创建失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     }
   }
 }

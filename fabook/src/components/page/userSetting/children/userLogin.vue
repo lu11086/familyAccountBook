@@ -106,7 +106,6 @@ export default {
           _this.memeryData.userInfo.redLine = data.red_line
           _this.memeryData.userInfo.rememberQuestion = data.remember_question
           _this.memeryData.userInfo.rememberAnswer = data.remember_answer
-          console.log(_this.memeryData.userInfo)
           setTimeout(function () {
             _this.$router.goBack()
           }, 1000)

@@ -37,7 +37,7 @@
     </ul>
     <div class="familyNotice" v-show="memeryData.userInfo.familyId">
       <h1>家庭公告</h1>
-      <p>本月花销过大，孩儿们注意着点花。以上。</p>
+      <p>{{familyNotice}}</p>
     </div>
     <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
     <com-foot :footerTab="3"></com-foot>
@@ -58,7 +58,8 @@ export default {
         rButtonType: 4
       },
       transitionName: 'slide-right',
-      toastMsg: ''
+      toastMsg: '',
+      familyNotice: ''
     }
   },
   components: {
@@ -76,15 +77,42 @@ export default {
     setTimeout(function () { next() }, 50)
   },
   mounted () {
+    this.familyNotice = this.memeryData.familyInfo.familyNotice
     let _this = this
     eventBus.$on('rightBtnClick', function (data) {
       if (_this.memeryData.isLogin) {
-        _this.$router.push('/familyInfo/familyCtrl')
+        if (_this.memeryData.userInfo.familyId) {
+          _this.$router.push('/familyInfo/familyCtrl')
+        } else {
+          _this.toastMsg = '请先创建家庭组再使用家庭组管理功能！'
+          _this.$refs.toastMsg.openToast()
+        }
       } else {
         _this.toastMsg = '请先登录再使用家庭组管理功能！'
         _this.$refs.toastMsg.openToast()
       }
     })
+    if (this.memeryData.isLogin) {
+      if (this.memeryData.userInfo.familyId != null) {
+        this.queryFamilyInfo()
+      } else {
+        this.$http.post(this.memeryData.serverUrl + '/family/checkFamily', {
+          'userId': this.memeryData.userInfo.userId
+        }, {emulateJSON: true}).then(function (response) {
+          if (response.body.msg === 'success') {
+            _this.memeryData.userInfo.familyId = response.body.family_id
+            _this.queryFamilyInfo()
+          } else {
+            _this.toastMsg = response.body.msgText
+            _this.$refs.toastMsg.openToast()
+          }
+        }, function (response) {
+          _this.toastMsg = '创建失败，请联系管理员！'
+          _this.$refs.toastMsg.openToast()
+          console.log(response)
+        })
+      }
+    }
   },
   methods: {
     toDataContrast: function (type) {
@@ -98,6 +126,29 @@ export default {
     },
     toInterface: function () {
       this.$router.push('/familyInfo/interface')
+    },
+    queryFamilyInfo: function () {
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/family/getFamilyInfo', {
+        'id': this.memeryData.userInfo.familyId
+      }, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          let data = response.body.data
+          _this.memeryData.familyInfo.familyName = data.fabook_family_name
+          let familyList = data.fabook_family_member.split(';')
+          familyList.splice(familyList.length - 1, 1)
+          _this.memeryData.familyInfo.familyList = familyList
+          _this.memeryData.familyInfo.familyRemark = data.fabook_family_remark
+          _this.memeryData.familyInfo.familyNotice = data.fabook_family_notice
+          _this.memeryData.familyInfo.familyRedLine = data.fabook_family_red_line
+          _this.memeryData.familyInfo.familyPlan = data.fabook_family_plan
+          _this.familyNotice = data.fabook_family_notice
+        }
+      }, function (response) {
+        _this.toastMsg = '创建失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     }
   },
   beforeDestroy () {

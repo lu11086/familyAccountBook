@@ -147,7 +147,12 @@ export default {
     })
     eventBus.$on('rightBtnClick', function (data) {
       if (_this.memeryData.isLogin) {
-        _this.$router.push('/index/createFamily')
+        if (_this.memeryData.userInfo.familyId != null) {
+          _this.toastMsg = '本账号已加入家庭组！'
+          _this.$refs.toastMsg.openToast()
+        } else {
+          _this.$router.push('/index/createFamily')
+        }
       } else {
         _this.toastMsg = '请先登录再使用新建家庭组功能！'
         _this.$refs.toastMsg.openToast()
