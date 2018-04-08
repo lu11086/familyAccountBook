@@ -10,37 +10,42 @@ var pool = mysql.createPool({  //连接池
     database:'fabook'  //数据库名称
 })
 
-//用户注册
-router.post('/register', function(req, res, next) {
-    var username = req.body.username;
-    var password = req.body.password;
-    var registerType = '';
-    var msgType = '';
-    if (username.indexOf('@') > -1) {
-        registerType = 'fabook_email';
-        msgType = '邮箱'
+//新建记录
+router.post('/newAccount', function(req, res, next) {
+    var title = req.body.title;
+    var isPay = req.body.isPay;
+    var type = req.body.type;
+    var amount = req.body.amount;
+    var time = req.body.time;
+    var remark = req.body.remark;
+    var id = req.body.id;
+    var name = req.body.name;
+    var family = req.body.family;
+    var now = new Date().getTime();
+    var accountId = id + now.toString();
+    var pay, income;
+    if (isPay > 0) {
+        pay = amount;
+        income = 0;
     } else {
-        registerType = 'fabook_tel'
-        msgType = '手机号'
+        pay = 0;
+        income = amount;
     }
     pool.getConnection(function(err,conn){
         if(err){
             console.log(err)
         }else{
-            var selectSQL= "select * from fabook_user WHERE "+registerType+"='"+username+"';";
-            conn.query(selectSQL,function(err,result){
-                var data = {}
-                if(result.length > 0) {
-                    data.msg = 'error'
-                    data.msgText = '该'+msgType+'已经被占用！'
-                    res.send(data)
+            var insertSQL= 'INSERT INTO fabook_account_now_month ' +
+                '(fabook_account_id, fabook_account_title, fabook_account_is_pay, fabook_account_type, fabook_account_remark, fabook_account_income, fabook_account_pay, fabook_account_user_id, fabook_account_user_name, fabook_account_family_id, fabook_account_date, create_date)' +
+                ' VALUES ' +
+                '("'+accountId+'", "'+title+'", "'+isPay+'", "'+type+'", "'+remark+'", "'+income+'","'+pay+'", "'+id+'", "'+name+'", "'+family+'", "'+time+'", NOW());';
+            conn.query(insertSQL,function(err,result){
+                if(err){
+                    console.log(err)
                 }else{
-                    var registerSQL= 'INSERT INTO fabook_user (fabook_name, fabook_sex, fabook_sysKey, '+registerType+', create_date) VALUES ("'+username+'", "0", "'+password+'", "'+username+'", NOW());';
-                    conn.query(registerSQL,function(err,result){
-                        var backInfo = {}
-                        backInfo.msg = 'success'
-                        res.send(backInfo)
-                    });
+                    var backInfo = {};
+                    backInfo.msg = 'success';
+                    res.send(backInfo)
                 }
                 //释放连接
                 conn.release();
@@ -49,40 +54,43 @@ router.post('/register', function(req, res, next) {
     });
 });
 
-//用户登录
-router.post('/login', function(req, res, next) {
-    var username = req.body.username;
-    var password = req.body.password;
-    var registerType = '';
-    var msgType = '';
-    if (username.indexOf('@') > -1) {
-        registerType = 'fabook_email';
-        msgType = '邮箱'
-    } else {
-        registerType = 'fabook_tel'
-        msgType = '手机号'
-    }
+//筛选收支记录
+router.post('/filterAccountList', function(req, res, next) {
+    var familyId = req.body.id;
     pool.getConnection(function(err,conn){
         if(err){
             console.log(err)
         }else{
-            var selectSQL= "select * from fabook_user WHERE "+registerType+"='"+username+"';";
+            var selectSQL = 'select sum(fabook_account_income) AS income, sum(fabook_account_pay) AS pay, fabook_account_date AS date from fabook_account_now_month ' +
+                'where fabook_account_date BETWEEN "2018-03-01" AND "2018-04-30" ' +
+                '&& fabook_account_family_id = '+familyId+' GROUP BY date ORDER BY date DESC;';
             conn.query(selectSQL,function(err,result){
-                var data = {}
-                if(result.length > 0) {
-                    if(result[0].fabook_sysKey == password) {
-                        data.msg = 'success'
-                        data.data = result
-                        res.send(data)
-                    } else {
-                        data.msg = 'error'
-                        data.msgText = '密码错误！'
-                        res.send(data)
-                    }
+                if(err){
+                    console.log(err)
                 }else{
-                    data.msg = 'error'
-                    data.msgText = '该'+msgType+'不存在！'
-                    res.send(data)
+                    var isEnd = result.length;
+                    var index = 0;
+                    var data = {};
+                    data.msg = 'success';
+                    data.data = result;
+                    for (var i in data.data) {
+                        var selectDate = 'select * from fabook_account_now_month ' +
+                            'where fabook_account_date = "'+data.data[i].date+'" ' +
+                            '&& fabook_account_family_id = '+familyId+' ORDER BY fabook_account_date DESC;'
+                        conn.query(selectDate,function(errDate,resultDate){
+                            if(errDate){
+                                console.log(errDate)
+                            }else{
+                                data.data[index].data = resultDate;
+                                isEnd --;
+                                index ++;
+                                end()
+                            }
+                        })
+                    }
+                    function end() {
+                        if (isEnd == 0) res.send(data)
+                    }
                 }
                 //释放连接
                 conn.release();

@@ -87,7 +87,8 @@ export default {
     })
     eventBus.$on('dataListFilter', function (data) {
       _this.isFilter = false
-      console.log(data)
+      _this.loadAccountList()
+      console.log(data, 'filter')
     })
     eventBus.$on('reloadList', function (data) {
       _this.loadTop()
@@ -102,6 +103,23 @@ export default {
     },
     loadTop: function () {
       this.$refs.loadmore.onTopLoaded()
+    },
+    loadAccountList: function () {
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/account/filterAccountList', {
+        'id': this.memeryData.userInfo.familyId
+      }, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          console.log(response.body.data)
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '创建失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     }
   },
   beforeDestroy () {

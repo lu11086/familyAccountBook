@@ -46,7 +46,7 @@ export default {
       this.rangeValue = parseInt(this.memeryData.userInfo.redLine.split('%')[0])
     } else {
       this.isNumber = true
-      this.redLineValue = this.memeryData.userInfo.redLine
+      this.redLineValue = parseFloat(this.memeryData.userInfo.redLine)
     }
   },
   methods: {

@@ -28,7 +28,7 @@
       </li>
       <li class="threePartTab fl" @click="toOtherPlan">
         <i class="iconfont fabook-toufangfangan"></i>
-        <p>他人方案</p>
+        <p>收支方案</p>
       </li>
       <li class="threePartTab fl" @click="toInterface">
         <i class="iconfont fabook-gengduo"></i>
@@ -140,7 +140,9 @@ export default {
           _this.memeryData.familyInfo.familyList = familyList
           _this.memeryData.familyInfo.familyRemark = data.fabook_family_remark
           _this.memeryData.familyInfo.familyNotice = data.fabook_family_notice
-          _this.memeryData.familyInfo.familyRedLine = data.fabook_family_red_line
+          let familyRedLine = data.fabook_family_red_line.split(';')
+          familyRedLine.splice(familyRedLine.length - 1, 1)
+          _this.memeryData.familyInfo.familyRedLine = familyRedLine
           _this.memeryData.familyInfo.familyPlan = data.fabook_family_plan
           _this.familyNotice = data.fabook_family_notice
         }

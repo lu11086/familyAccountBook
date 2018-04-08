@@ -1,6 +1,7 @@
 <template>
   <div>
     <com-head :menuType="headType" :leftBtnClick="leftBtnClick"></com-head>
+    <p class="gray" v-show="!memeryData.userInfo.isFamilyAdmin">* 非家庭管理员不能保存红线配置 *</p>
     <div class="redLineArea">
       <p>选择红线设置方案：</p>
       <ul class="lineTab clearfix">
@@ -23,7 +24,7 @@
           </li>
         </ul>
       </div>
-      <button @click="saveRedLine">保存设置</button>
+      <button @click="saveRedLine" v-show="memeryData.userInfo.isFamilyAdmin">保存设置</button>
     </div>
     <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
   </div>
@@ -44,7 +45,7 @@ export default {
       isNumber: false,
       rangeValue: 80,
       redLineValue: 0,
-      userList: ['18232251500', '13533344444'],
+      userList: [],
       userValue: []
     }
   },
@@ -53,32 +54,73 @@ export default {
     toastMsg
   },
   mounted () {
-    let average = Math.floor(100 / this.userList.length)
-    // eslint-disable-next-line
-    for (let i in this.userList) this.userValue.push(average)
+    this.userList = this.memeryData.familyInfo.familyList
+    if (this.memeryData.familyInfo.familyRedLine.length > 1) {
+      if (this.memeryData.familyInfo.familyRedLine[0].indexOf('%') > -1) {
+        this.isNumber = false
+        this.rangeValue = parseInt(this.memeryData.familyInfo.familyRedLine[0].split('%')[0])
+      } else {
+        this.isNumber = true
+        this.redLineValue = parseFloat(this.memeryData.familyInfo.familyRedLine[0])
+      }
+      for (let i = 1; i < this.memeryData.familyInfo.familyRedLine.length; i++) {
+        this.userValue.push(parseInt(this.memeryData.familyInfo.familyRedLine[i]))
+      }
+    } else {
+      let average = Math.floor(100 / this.userList.length)
+      // eslint-disable-next-line
+      for (let i in this.userList) this.userValue.push(average)
+    }
   },
   methods: {
     changeType: function (type) {
       this.isNumber = type
     },
     saveRedLine: function () {
+      let params = {}
+      // 备份原有家庭红线
+      let oldRedLine = []
+      for (let i in this.memeryData.familyInfo.familyRedLine) {
+        oldRedLine.push(this.memeryData.familyInfo.familyRedLine[i])
+      }
+      this.memeryData.familyInfo.familyRedLine = []
+      params.id = this.memeryData.userInfo.familyId
+      if (this.isNumber) {
+        params.redLine = this.redLineValue + ';'
+        this.memeryData.familyInfo.familyRedLine.push(this.redLineValue)
+      } else {
+        params.redLine = this.rangeValue + '%;'
+        this.memeryData.familyInfo.familyRedLine.push(this.rangeValue + '%')
+      }
       let sum = 0
       for (let i in this.userValue) {
         sum += this.userValue[i]
+        params.redLine += this.userValue[i] + ';'
+        this.memeryData.familyInfo.familyRedLine.push(this.userValue[i])
       }
       if (sum > 100) {
+        this.memeryData.familyInfo = oldRedLine
         this.toastMsg = '家庭成员占比和不得超过100%'
         this.$refs.toastMsg.openToast()
-      }
-      let params = {}
-      if (this.isNumber) {
-        params.isNumber = true
-        params.redLineValue = this.redLineValue
       } else {
-        params.isNumber = false
-        params.rangeValue = this.rangeValue
+        let _this = this
+        this.$http.post(this.memeryData.serverUrl + '/family/changeRedLine', params, {emulateJSON: true}).then(function (response) {
+          if (response.body.msg === 'success') {
+            _this.toastMsg = '保存成功！'
+            _this.$refs.toastMsg.openToast()
+            setTimeout(function () {
+              _this.leftBtnClick()
+            }, 1000)
+          } else {
+            _this.toastMsg = response.body.msgText
+            _this.$refs.toastMsg.openToast()
+          }
+        }, function (response) {
+          _this.toastMsg = '保存失败，请联系管理员！'
+          _this.$refs.toastMsg.openToast()
+          console.log(response)
+        })
       }
-      console.log(params)
     },
     leftBtnClick: function () {
       this.$router.goBack()
@@ -143,5 +185,10 @@ export default {
     background: $defaultBlue;
     color: #fff;
     font-size: 1rem;
+  }
+  p.gray{
+    color: $defaultLightGray;
+    text-align: center;
+    background: $defaultGray;
   }
 </style>

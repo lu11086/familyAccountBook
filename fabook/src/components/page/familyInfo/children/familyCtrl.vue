@@ -2,6 +2,7 @@
   <div>
     <com-head :menuType="headType" :leftBtnClick="leftBtnClick"></com-head>
     <div class="createFamilyArea">
+      <p class="gray" v-show="!memeryData.userInfo.isFamilyAdmin">* 非家庭管理员不能更改家庭组信息 *</p>
       <div class="lineTab clearfix">
         <p>家庭昵称 :</p>
         <input type="text" name="familyName" placeholder="限制10字以内；可为空；" v-model="familyName" @input="checkUnderTen" @blur="closeError" :disabled="!memeryData.userInfo.isFamilyAdmin"/>
@@ -289,5 +290,11 @@ export default {
         color: #fff;
       }
     }
+  }
+  p.gray{
+    padding: .5rem;
+    color: $defaultLightGray;
+    text-align: center;
+    background: $defaultGray;
   }
 </style>

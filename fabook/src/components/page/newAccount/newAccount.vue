@@ -57,7 +57,7 @@
         <h6 v-show="remarkError" class="remark">备注不能超过100个字！</h6>
       </div>
       <div class="lineTab clearfix">
-        <span class="fl">记录金额 :</span><input type="text" name="accountAmount" placeholder="单位：人民币" v-model="accountAmount" />
+        <span class="fl">记录金额 :</span><input type="text" name="accountAmount" placeholder="单位：人民币" v-model="accountAmount" oninput="if(value.length > 14) value=value.slice(0,14)" />
       </div>
       <div class="lineTab clearfix">
         <span class="fl">记录时间 :</span><input type="text" name="accountDate" v-model="accountDate" @focus="showCalendar" readonly=true width="auto"/>
@@ -68,14 +68,16 @@
       <div class="lineTab clearfix">
         <!--暂不开放预览功能-->
         <!--<button class="fl"><i class="iconfont fabook-yulan"></i>预览</button>-->
-        <button class="fl"><i class="iconfont fabook-right-1"></i>保存</button>
+        <button class="fl" @click="saveNewAccount"><i class="iconfont fabook-right-1"></i>保存</button>
       </div>
+      <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
     </div>
   </div>
 </template>
 
 <script>
 import eventBus from '@/components/common/eventBus.js'
+import toastMsg from '@/components/common/message/toastMsg'
 export default {
   data () {
     return {
@@ -88,8 +90,12 @@ export default {
       remarkError: false,
       accountDate: '',
       isCalendarShow: false,
-      accountAmount: ''
+      accountAmount: '',
+      toastMsg: ''
     }
+  },
+  components: {
+    toastMsg
   },
   mounted () {
     let myDate = new Date()
@@ -144,6 +150,47 @@ export default {
       if (parseInt(info[2]) < 10) result += '0'
       result += info[2]
       return result
+    },
+    saveNewAccount: function () {
+      if (this.accountTitle === '') {
+        this.toastMsg = '标题不能为空！'
+        this.$refs.toastMsg.openToast()
+        return
+      } else if (this.accountAmount === '') {
+        this.toastMsg = '金额不能为空！'
+        this.$refs.toastMsg.openToast()
+        return
+      }
+      if (!this.remarkError && !this.titleError) {
+        let params = {}
+        params.title = this.accountTitle
+        params.isPay = Number(this.accountPay)
+        if (this.accountPay) params.type = this.payType
+        if (!this.accountPay) params.type = this.incomeType
+        params.amount = this.accountAmount
+        params.time = this.accountDate
+        params.remark = this.accountRemark
+        params.id = this.memeryData.userInfo.userId
+        params.name = this.memeryData.userInfo.username
+        params.family = this.memeryData.userInfo.familyId
+        let _this = this
+        this.$http.post(this.memeryData.serverUrl + '/account/newAccount', params, {emulateJSON: true}).then(function (response) {
+          if (response.body.msg === 'success') {
+            _this.toastMsg = '新增记录成功！'
+            _this.$refs.toastMsg.openToast()
+            setTimeout(function () {
+              _this.closeNewAccount()
+            }, 1000)
+          } else {
+            _this.toastMsg = response.body.msgText
+            _this.$refs.toastMsg.openToast()
+          }
+        }, function (response) {
+          _this.toastMsg = '创建失败，请联系管理员！'
+          _this.$refs.toastMsg.openToast()
+          console.log(response)
+        })
+      }
     }
   },
   beforeDestroy () {
