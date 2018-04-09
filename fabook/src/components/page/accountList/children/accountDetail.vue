@@ -51,6 +51,7 @@
       <button @click="delAccount" ><i class="iconfont fabook-shibai"></i>删除该记录</button>
     </div>
     <click-msg :msg="clickMsg" ref="clickMsg"></click-msg>
+    <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
   </div>
 </template>
 
@@ -58,6 +59,7 @@
 import comHead from '@/components/common/comHead/commonHead'
 import clickMsg from '@/components/common/message/clickMsg'
 import eventBus from '@/components/common/eventBus.js'
+import toastMsg from '@/components/common/message/toastMsg'
 export default {
   data () {
     return {
@@ -67,32 +69,25 @@ export default {
         rButtonType: 0
       },
       detailInfo: {},
-      clickMsg: '确认删除吗？'
+      clickMsg: '确认删除吗？',
+      toastMsg: ''
     }
   },
   components: {
     comHead,
-    clickMsg
+    clickMsg,
+    toastMsg
   },
   mounted () {
-    this.detailInfo = {
-      fabook_record_title: '捡的是假钱，被警察罚款倒贴了100',
-      fabook_record_pay: 1,
-      fabook_record_type: 299,
-      fabook_record_amount: 100,
-      fabook_record_time: '2018-03-22',
-      fabook_record_remark: '不想说话',
-      fabook_user_id: '18218218182',
-      fabook_user_name: '测试名'
-    }
+    this.getAccountDetail()
+
     let _this = this
     eventBus.$on('clickMsgOk', function (data) {
-      console.log('delete')
-      _this.leftBtnClick()
-      eventBus.$emit('reloadList', 'reloadList')
+      console.log('确认删除')
+      _this.deleteDetail()
     })
     eventBus.$on('clickMsgCancel', function (data) {
-      console.log('cancel')
+      console.log('取消删除')
       _this.$refs.clickMsg.closeClick()
     })
   },
@@ -102,6 +97,45 @@ export default {
     },
     delAccount: function () {
       this.$refs.clickMsg.openClick()
+    },
+    getAccountDetail: function () {
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/account/getDetail', {
+        'id': this.$route.params.accountId
+      }, {emulateJSON: true}).then(function (response) {
+        if (response.body.msg === 'success') {
+          _this.detailInfo = response.body.data
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '创建失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
+    },
+    deleteDetail: function () {
+      let _this = this
+      this.$http.post(this.memeryData.serverUrl + '/account/deleteDetail', {
+        'id': this.$route.params.accountId
+      }, {emulateJSON: true}).then(function (response) {
+        _this.$refs.clickMsg.closeClick()
+        if (response.body.msg === 'success') {
+          _this.toastMsg = '删除成功！'
+          _this.$refs.toastMsg.openToast()
+          setTimeout(function () {
+            _this.leftBtnClick()
+          }, 1000)
+        } else {
+          _this.toastMsg = response.body.msgText
+          _this.$refs.toastMsg.openToast()
+        }
+      }, function (response) {
+        _this.toastMsg = '创建失败，请联系管理员！'
+        _this.$refs.toastMsg.openToast()
+        console.log(response)
+      })
     }
   }
 }
@@ -136,7 +170,6 @@ export default {
     }
   }
   p{
-    height: 1.5rem;
     line-height: 1.5rem;
   }
   span{

@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   returnType(payType) {
     var result;

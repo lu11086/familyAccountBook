@@ -158,13 +158,11 @@ export default {
         _this.$refs.toastMsg.openToast()
       }
     })
-    this.$http.post(this.memeryData.serverUrl + '/users/login', {username: '18232251500', password: 'admin'}, {emulateJSON: true}).then(function (response) {
-      console.log(response.body)
-    }, function (response) {
-      console.log(response)
-    })
   },
   methods: {
+    familyPost: function () {
+
+    }
   },
   beforeDestroy () {
     eventBus.$off('changeLeftHeadTab')

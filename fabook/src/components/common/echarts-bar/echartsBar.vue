@@ -20,7 +20,10 @@ export default {
     }
   },
   mounted () {
-    this.initChart()
+    if (this.echartData.style === undefined) {
+      this.$refs.myEchart.style.height = this.$refs.myEchart.parentNode.clientHeight + 'px'
+      this.$refs.myEchart.style.width = this.$refs.myEchart.parentNode.clientWidth + 'px'
+    }
   },
   beforeDestroy () {
     if (!this.chart) {
@@ -30,11 +33,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart () {
-      if (this.echartData.style === undefined) {
-        this.$refs.myEchart.style.height = this.$refs.myEchart.parentNode.clientHeight + 'px'
-        this.$refs.myEchart.style.width = this.$refs.myEchart.parentNode.clientWidth + 'px'
-      }
+    chartOption: function (legend, data, oldData) {
       this.chart = echarts.init(this.$refs.myEchart)
       this.chart.setOption({
         title: {
@@ -47,7 +46,7 @@ export default {
           }
         },
         legend: {
-          data: ['2018年2月', '2018年3月'],
+          data: ['上月', '本月'],
           top: 25,
           right: 20
         },
@@ -59,7 +58,7 @@ export default {
         },
         xAxis: {
           type: 'category',
-          data: ['服装', '饰品', '路费', '水电费', '食品食物']
+          data: legend
         },
         yAxis: {
           type: 'value',
@@ -67,14 +66,14 @@ export default {
         },
         series: [
           {
-            name: '2018年2月',
+            name: '上月',
             type: 'bar',
-            data: [182, 234, 290, 1049, 1317]
+            data: oldData
           },
           {
-            name: '2018年3月',
+            name: '本月',
             type: 'bar',
-            data: [335, 310, 234, 135, 1548]
+            data: data
           }
         ]
       })

@@ -3,6 +3,10 @@
     <com-head :menuType="headType" :leftBtnClick="leftBtnClick"></com-head>
     <div class="appSettingArea">
     <ul>
+      <li class="ceilLineTab" @click="loadData" v-show="memeryData.isLogin">
+        上传离线数据至本账户
+        <i class="iconfont fabook-iconfontjiantou4 fr"></i>
+      </li>
       <li class="ceilLineTab" @click="checkNewApp">
         检查更新
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
@@ -11,23 +15,22 @@
         关于本软件
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
-      <li class="ceilLineTab" @click="changeLogin">
-        切换登录状态
-        <i class="iconfont fabook-iconfontjiantou4 fr"></i>
-      </li>
-      <li class="ceilLineTab" @click="changeFamilyAdmin">
-        切换家庭管理员身份
+      <li class="ceilLineTab" @click="quitLogin" v-show="memeryData.isLogin">
+        退出登录
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
     </ul>
     </div>
     <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
+    <click-msg :msg="clickMsg" ref="clickMsg"></click-msg>
   </div>
 </template>
 
 <script>
 import comHead from '@/components/common/comHead/commonHead'
 import toastMsg from '@/components/common/message/toastMsg'
+import clickMsg from '@/components/common/message/clickMsg'
+import eventBus from '@/components/common/eventBus.js'
 export default {
   data () {
     return {
@@ -36,11 +39,13 @@ export default {
         lTitleType: 2,
         rButtonType: 0
       },
+      clickMsg: '',
       toastMsg: ''
     }
   },
   components: {
     comHead,
+    clickMsg,
     toastMsg
   },
   mounted () {
@@ -57,38 +62,45 @@ export default {
     leftBtnClick: function () {
       this.$router.goBack()
     },
-    changeLogin: function () {
-      if (!this.memeryData.isLogin) {
-        this.memeryData.isLogin = true
-        this.memeryData.userInfo.username = '测试'
-        this.memeryData.userInfo.tel = '18232251500'
-        this.memeryData.userInfo.email = 'lu11086@qq.com'
-        this.memeryData.userInfo.userId = '18218218182'
-        this.memeryData.userInfo.isFamilyAdmin = false
-        this.memeryData.userInfo.familyId = '110'
-        this.toastMsg = '切换成功！已登录'
-        this.$refs.toastMsg.openToast()
-      } else {
-        this.memeryData.isLogin = false
-        this.memeryData.userInfo.username = ''
-        this.memeryData.userInfo.tel = ''
-        this.memeryData.userInfo.email = ''
-        this.memeryData.userInfo.userId = ''
-        this.memeryData.userInfo.isFamilyAdmin = false
-        this.memeryData.userInfo.familyId = null
-        this.toastMsg = '切换成功！已退出登录'
-        this.$refs.toastMsg.openToast()
-      }
+    quitLogin: function () {
+      this.clickMsg = '确认退出登录吗？'
+      this.$refs.clickMsg.openClick()
+      let _this = this
+      eventBus.$on('clickMsgOk', function (data) {
+        _this.memeryData.isLogin = false
+        _this.memeryData.userInfo = {}
+        _this.memeryData.userInfo.sexNumber = 0
+        _this.memeryData.userInfo.familyId = null
+        _this.memeryData.userInfo.username = '点击此处登录'
+        _this.memeryData.userInfo.userRemark = '登录后可使用更多功能'
+        _this.memeryData.userInfo.redLine = '80%'
+        _this.memeryData.userInfo.fixedIncome = 0
+        _this.memeryData.userInfo.fixedPay = 0
+        _this.memeryData.familyInfo = {}
+        _this.memeryData.familyInfo.familyNotice = '暂无公告'
+        _this.$refs.clickMsg.closeClick()
+        _this.toastMsg = '成功退出登录！'
+        _this.$refs.toastMsg.openToast()
+        setTimeout(function () {
+          _this.leftBtnClick()
+        }, 1000)
+      })
+      eventBus.$on('clickMsgCancel', function (data) {
+        _this.$refs.clickMsg.closeClick()
+      })
     },
-    changeFamilyAdmin: function () {
-      if (this.memeryData.isLogin) {
-        this.memeryData.userInfo.isFamilyAdmin = !this.memeryData.userInfo.isFamilyAdmin
-        this.toastMsg = '切换成功！'
-        this.$refs.toastMsg.openToast()
-      } else {
-        this.toastMsg = '未登录状态下不得切换'
-        this.$refs.toastMsg.openToast()
-      }
+    loadData: function () {
+      this.clickMsg = '确认上传本地离线数据至 ' + this.memeryData.userInfo.username + ' 吗？'
+      this.$refs.clickMsg.openClick()
+      let _this = this
+      eventBus.$on('clickMsgOk', function (data) {
+        console.log('上传')
+        _this.$refs.clickMsg.closeClick()
+      })
+      eventBus.$on('clickMsgCancel', function (data) {
+        console.log('取消')
+        _this.$refs.clickMsg.closeClick()
+      })
     }
   }
 }

@@ -20,7 +20,10 @@ export default {
     }
   },
   mounted () {
-    this.initChart()
+    if (this.echartData.style === undefined) {
+      this.$refs.myEchart.style.height = this.$refs.myEchart.parentNode.clientHeight + 'px'
+      this.$refs.myEchart.style.width = this.$refs.myEchart.parentNode.clientWidth + 'px'
+    }
   },
   beforeDestroy () {
     if (!this.chart) {
@@ -30,11 +33,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart () {
-      if (this.echartData.style === undefined) {
-        this.$refs.myEchart.style.height = this.$refs.myEchart.parentNode.clientHeight + 'px'
-        this.$refs.myEchart.style.width = this.$refs.myEchart.parentNode.clientWidth + 'px'
-      }
+    chartOption: function (legend, data) {
       this.chart = echarts.init(this.$refs.myEchart)
       this.chart.setOption({
         tooltip: {
@@ -44,7 +43,7 @@ export default {
         legend: {
           orient: 'vertical',
           x: 'left',
-          data: ['服装', '饰品', '路费', '水电费', '食品食物']
+          data: legend
         },
         series: [
           {
@@ -70,13 +69,7 @@ export default {
                 show: false
               }
             },
-            data: [
-              {value: 335, name: '服装'},
-              {value: 310, name: '饰品'},
-              {value: 234, name: '路费'},
-              {value: 135, name: '水电费'},
-              {value: 1548, name: '食品食物'}
-            ]
+            data: data
           }
         ]
       })

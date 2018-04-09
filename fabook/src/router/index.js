@@ -55,7 +55,7 @@ export default new Router({
       component: accountList,
       children: [
         {
-          path: 'detail',
+          path: 'detail/:accountId',
           name: 'accountDetail',
           component: accountDetail
         }
