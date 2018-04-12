@@ -37,6 +37,8 @@ export default {
     this.memeryData.userInfo.fixedPay = 0
     this.memeryData.familyInfo = {}
     this.memeryData.familyInfo.familyNotice = '暂无公告'
+    if (sessionStorage.getItem('isLogin')) this.memeryData.isLogin = true
+    if (sessionStorage.getItem('userInfo')) this.memeryData.userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <transition name="opacity-fade">
     <div class="clickArea" v-show="isShow">
-      <div class="clickMsg">
-        <p>{{msg}}</p>
+      <div class="clickMsg" :style="customStyle">
+        <p v-html="msg"></p>
         <div class="chooseBtn">
           <button @click="clickOk">确认</button>
           <button @click="clickCancel">取消</button>
@@ -24,6 +24,12 @@ export default {
     msg: {
       type: String,
       default: ''
+    },
+    customStyle: {
+      type: Object,
+      default: function () {
+        return {}
+      }
     },
     clickOk: {
       type: Function,
@@ -73,7 +79,7 @@ export default {
       p{
         font-size: 1rem;
         color: #fff;
-        padding: 1rem 0;
+        padding: 1rem;
       }
       .chooseBtn{
         position: absolute;

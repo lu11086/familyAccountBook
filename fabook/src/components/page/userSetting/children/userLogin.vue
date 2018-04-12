@@ -21,12 +21,15 @@
       </div>
     </div>
     <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
+    <click-msg :msg="clickMsg" :customStyle="customStyle" ref="clickMsg"></click-msg>
   </div>
 </template>
 
 <script>
 import comHead from '@/components/common/comHead/commonHead'
 import toastMsg from '@/components/common/message/toastMsg'
+import clickMsg from '@/components/common/message/clickMsg'
+import eventBus from '@/components/common/eventBus.js'
 export default {
   data () {
     return {
@@ -39,11 +42,13 @@ export default {
       username: '',
       password: '',
       isPwdSee: true,
-      toastMsg: '登录成功!'
+      toastMsg: '登录成功!',
+      customStyle: {}
     }
   },
   components: {
     comHead,
+    clickMsg,
     toastMsg
   },
   beforeRouteUpdate (to, from, next) {
@@ -106,9 +111,25 @@ export default {
           _this.memeryData.userInfo.redLine = data.red_line
           _this.memeryData.userInfo.rememberQuestion = data.remember_question
           _this.memeryData.userInfo.rememberAnswer = data.remember_answer
-          setTimeout(function () {
-            _this.$router.goBack()
-          }, 1000)
+          sessionStorage.setItem('isLogin', true)
+          sessionStorage.setItem('userInfo', JSON.stringify(_this.memeryData.userInfo))
+          if (localStorage.getItem('newAccount')) {
+            _this.customStyle = {'height': '10.5rem'}
+            _this.clickMsg = '检测到本地有未上传记录，是否上传至该账户？' +
+              '<br />' +
+              '<span style="color: #ccc;font-size: .8rem;display: inline-block;padding-top: .5rem;text-align: left;">注：登录后所有数据对比只参考线上数据，未上传数据不会参与对比，因此会出现偏差值。</span>'
+            _this.$refs.clickMsg.openClick()
+            eventBus.$on('clickMsgOk', function (data) {
+              _this.$refs.clickMsg.closeClick()
+            })
+            eventBus.$on('clickMsgCancel', function (data) {
+              _this.$refs.clickMsg.closeClick()
+            })
+          } else {
+            setTimeout(function () {
+              _this.$router.goBack()
+            }, 1000)
+          }
         } else {
           _this.toastMsg = response.body.msgText
           _this.$refs.toastMsg.openToast()

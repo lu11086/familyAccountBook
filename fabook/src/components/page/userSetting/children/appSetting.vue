@@ -19,6 +19,10 @@
         退出登录
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
+      <li class="ceilLineTab" style="width: 100%;position: absolute;bottom: 0;border-top: 1px solid #ddd;">
+        更改服务地址：<input type="text" v-model="serverAddress" style="text-align: center" />
+        <button @click="changeIP" style="color: #fff;background: #aaa;padding: .2rem .5rem;border-radius: .3rem;font-size: 1.2rem;">更改</button>
+      </li>
     </ul>
     </div>
     <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
@@ -40,7 +44,8 @@ export default {
         rButtonType: 0
       },
       clickMsg: '',
-      toastMsg: ''
+      toastMsg: '',
+      serverAddress: ''
     }
   },
   components: {
@@ -49,8 +54,12 @@ export default {
     toastMsg
   },
   mounted () {
+    this.serverAddress = this.memeryData.serverUrl.split('http://')[1].split(':3000')[0]
   },
   methods: {
+    changeIP: function () {
+      this.memeryData.serverUrl = 'http://' + this.serverAddress + ':3000'
+    },
     checkNewApp: function () {
       this.toastMsg = '软件已经是最新版本'
       this.$refs.toastMsg.openToast()
@@ -79,6 +88,8 @@ export default {
         _this.memeryData.familyInfo = {}
         _this.memeryData.familyInfo.familyNotice = '暂无公告'
         _this.$refs.clickMsg.closeClick()
+        sessionStorage.removeItem('isLogin')
+        sessionStorage.removeItem('userInfo')
         _this.toastMsg = '成功退出登录！'
         _this.$refs.toastMsg.openToast()
         setTimeout(function () {
@@ -90,7 +101,7 @@ export default {
       })
     },
     loadData: function () {
-      this.clickMsg = '确认上传本地离线数据至 ' + this.memeryData.userInfo.username + ' 吗？'
+      this.clickMsg = '确认上传本地离线数据<br />至 ' + this.memeryData.userInfo.username + ' 吗？'
       this.$refs.clickMsg.openClick()
       let _this = this
       eventBus.$on('clickMsgOk', function (data) {

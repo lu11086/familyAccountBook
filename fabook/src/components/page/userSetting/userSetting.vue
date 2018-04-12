@@ -28,6 +28,7 @@
         <i class="iconfont fabook-iconfontjiantou4 fr"></i>
       </li>
     </ul>
+    <toast-msg :msg="toastMsg" ref="toastMsg"></toast-msg>
     <com-foot :footerTab="4"></com-foot>
   </div>
 </template>
@@ -35,6 +36,7 @@
 <script>
 import comHead from '@/components/common/comHead/commonHead'
 import comFoot from '@/components/common/comFoot/commonFoot'
+import toastMsg from '@/components/common/message/toastMsg'
 const headerImg1 = require('@/assets/userHeader1.png')
 const headerImg2 = require('@/assets/userHeader2.png')
 const headerImg3 = require('@/assets/userHeader3.png')
@@ -56,7 +58,8 @@ export default {
         rButtonType: 0
       },
       transitionName: 'slide-right',
-      userHeadImg: [headerImg1, headerImg2, headerImg3, headerImg4, headerImg5, headerImg6, headerImg7, headerImg8, headerImg9, headerImg10, headerImg11, headerImg12]
+      userHeadImg: [headerImg1, headerImg2, headerImg3, headerImg4, headerImg5, headerImg6, headerImg7, headerImg8, headerImg9, headerImg10, headerImg11, headerImg12],
+      toastMsg: ''
     }
   },
   beforeRouteUpdate (to, from, next) {
@@ -70,7 +73,8 @@ export default {
   },
   components: {
     comHead,
-    comFoot
+    comFoot,
+    toastMsg
   },
   methods: {
     toEditUserInfo: function () {
@@ -83,7 +87,12 @@ export default {
       this.$router.push('/userSetting/redLine')
     },
     tofixedCtrl: function () {
-      this.$router.push('/userSetting/fixedCtrl')
+      if (this.memeryData.isLogin) {
+        this.$router.push('/userSetting/fixedCtrl')
+      } else {
+        this.toastMsg = '请登录后使用固定收支功能'
+        this.$refs.toastMsg.openToast()
+      }
     },
     toAppSetting: function () {
       this.$router.push('/userSetting/appSetting')
