@@ -20,6 +20,11 @@ Vue.component(Radio.name, Radio)
 Vue.config.productionTip = false
 Vue.prototype.memeryData = {}
 
+const isDebug_mode = process.env.NODE_ENV !== 'production';
+Vue.config.debug = isDebug_mode;
+Vue.config.devtools = isDebug_mode;
+Vue.config.productionTip = isDebug_mode;
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

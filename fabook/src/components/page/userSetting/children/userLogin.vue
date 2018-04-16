@@ -43,6 +43,7 @@ export default {
       password: '',
       isPwdSee: true,
       toastMsg: '登录成功!',
+      clickMsg: '',
       customStyle: {}
     }
   },

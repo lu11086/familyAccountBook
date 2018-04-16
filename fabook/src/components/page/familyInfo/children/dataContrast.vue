@@ -31,7 +31,7 @@
 <script>
 import comHead from '@/components/common/comHead/commonHead'
 import echartPie from '@/components/common/echarts-pie/echartsPieContrast'
-import echartBar from '@/components/common/echarts-bar/echartsBar'
+import echartBar from '@/components/common/echarts-bar/echartsBarMonth'
 import echartBarWeek from '@/components/common/echarts-bar/echartsBarWeek'
 import echartBarQuarter from '@/components/common/echarts-bar/echartsBarQuarter'
 import toastMsg from '@/components/common/message/toastMsg'

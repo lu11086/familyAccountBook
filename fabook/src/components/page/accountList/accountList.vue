@@ -120,6 +120,7 @@ export default {
         this.$http.post(this.memeryData.serverUrl + '/account/filterAccountList', this.params, {emulateJSON: true}).then(function (response) {
           if (response.body.msg === 'success') {
             _this.dataList = response.body.data
+            console.log(_this.dataList)
           } else {
             _this.toastMsg = response.body.msgText
             _this.$refs.toastMsg.openToast()
@@ -129,7 +130,43 @@ export default {
           _this.$refs.toastMsg.openToast()
           console.log(response)
         })
+      } else {
+        let newList
+        let singleList
+        if (localStorage.getItem('newAccount')) newList = JSON.parse(localStorage.getItem('newAccount'))
+        if (localStorage.getItem('singleInfo')) singleList = JSON.parse(localStorage.getItem('singleInfo'))
+        if (localStorage.getItem('newAccount')) {
+          for (let i in newList) {
+            singleList.push(newList[i])
+          }
+        }
+        let dataList = []
+        let dataTab = {}
+        for (let i in singleList) {
+          if (dataTab[singleList[i].fabook_account_date]) {
+            dataTab[singleList[i].fabook_account_date].pay += parseFloat(singleList[i].fabook_account_pay)
+            dataTab[singleList[i].fabook_account_date].income += parseFloat(singleList[i].fabook_account_income)
+            dataTab[singleList[i].fabook_account_date].data.push(singleList[i])
+          } else {
+            dataTab[singleList[i].fabook_account_date] = {}
+            dataTab[singleList[i].fabook_account_date].date = singleList[i].fabook_account_date
+            dataTab[singleList[i].fabook_account_date].pay = parseFloat(singleList[i].fabook_account_pay)
+            dataTab[singleList[i].fabook_account_date].income = parseFloat(singleList[i].fabook_account_income)
+            dataTab[singleList[i].fabook_account_date].data = []
+            dataTab[singleList[i].fabook_account_date].data.push(singleList[i])
+          }
+        }
+        for (let i in dataTab) dataList.push(dataTab[i])
+        console.log(dataList)
+        this.dataList = this.toggleArray(dataList)
       }
+    },
+    toggleArray: function (arr) {
+      let newArray = []
+      for (let i = 0; i < arr.length; i++) {
+        newArray.push(arr[arr.length - i - 1])
+      }
+      return newArray
     }
   },
   beforeDestroy () {

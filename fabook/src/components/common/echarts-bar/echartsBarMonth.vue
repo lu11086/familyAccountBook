@@ -33,37 +33,46 @@ export default {
     this.chart = null
   },
   methods: {
-    chartOption: function (legend, data) {
+    chartOption: function (legend, data, oldData) {
       this.chart = echarts.init(this.$refs.myEchart)
       this.chart.setOption({
+        title: {
+          text: '本月花销前五对比'
+        },
         tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b}: {c} ({d}%)'
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        legend: {
+          data: ['上月', '本月'],
+          top: 25,
+          right: 20
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          data: legend
+        },
+        yAxis: {
+          type: 'value',
+          boundaryGap: [0, 0.01]
         },
         series: [
           {
-            name: '支出情况',
-            type: 'pie',
-            radius: ['50%', '70%'],
-            avoidLabelOverlap: false,
-            label: {
-              normal: {
-                show: false,
-                position: 'center'
-              },
-              emphasis: {
-                show: true,
-                textStyle: {
-                  fontSize: '20',
-                  fontWeight: 'bold'
-                }
-              }
-            },
-            labelLine: {
-              normal: {
-                show: false
-              }
-            },
+            name: '上月',
+            type: 'bar',
+            data: oldData
+          },
+          {
+            name: '本月',
+            type: 'bar',
             data: data
           }
         ]

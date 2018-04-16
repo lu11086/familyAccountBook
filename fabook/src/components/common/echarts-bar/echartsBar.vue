@@ -33,22 +33,18 @@ export default {
     this.chart = null
   },
   methods: {
-    chartOption: function (legend, data, oldData) {
+    chartOption: function (legend, data) {
       this.chart = echarts.init(this.$refs.myEchart)
       this.chart.setOption({
+        color: ['#09C'],
         title: {
-          text: '本月花销前五对比'
+          text: '本月花销前五'
         },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
             type: 'shadow'
           }
-        },
-        legend: {
-          data: ['上月', '本月'],
-          top: 25,
-          right: 20
         },
         grid: {
           left: '3%',
@@ -65,11 +61,6 @@ export default {
           boundaryGap: [0, 0.01]
         },
         series: [
-          {
-            name: '上月',
-            type: 'bar',
-            data: oldData
-          },
           {
             name: '本月',
             type: 'bar',

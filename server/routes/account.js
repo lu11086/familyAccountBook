@@ -213,8 +213,13 @@ router.post('/getContrastData', function(req, res, next) {
                 if (err) {
                     console.log(err)
                 } else {
-                    data.data.sumIncome = result[0].income;
-                    data.data.sumPay = result[0].pay;
+                    if(result.length > 0) {
+                        data.data.sumIncome = result[0].income;
+                        data.data.sumPay = result[0].pay;
+                    } else {
+                        data.data.sumIncome = 0;
+                        data.data.sumPay = 0;
+                    }
                     endIt();
                 }
             });
@@ -266,8 +271,13 @@ router.post('/getContrastData', function(req, res, next) {
                 if (err) {
                     console.log(err)
                 } else {
-                    data.data.oldIncome = result[0].income;
-                    data.data.oldPay = result[0].pay;
+                    if(result.length > 0) {
+                        data.data.oldIncome = result[0].income;
+                        data.data.oldPay = result[0].pay;
+                    } else {
+                        data.data.oldIncome = 0;
+                        data.data.oldPay = 0;
+                    }
                     endIt();
                 }
             });
