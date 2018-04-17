@@ -106,12 +106,51 @@ export default {
       let _this = this
       eventBus.$on('clickMsgOk', function (data) {
         console.log('上传')
+        if (localStorage.getItem('newAccount')) _this.uploadData()
         _this.$refs.clickMsg.closeClick()
       })
       eventBus.$on('clickMsgCancel', function (data) {
         console.log('取消')
         _this.$refs.clickMsg.closeClick()
       })
+    },
+    uploadData: function () {
+      let successIndex
+      let newList = JSON.parse(localStorage.getItem('newAccount'))
+      for (let i in newList) {
+        let params = {}
+        params.title = newList[i].fabook_account_title
+        params.isPay = Number(newList[i].fabook_account_is_pay)
+        params.type = newList[i].fabook_account_type
+        if (newList[i].fabook_account_income > 0) params.amount = newList[i].fabook_account_income
+        if (newList[i].fabook_account_pay > 0) params.amount = newList[i].fabook_account_pay
+        params.time = newList[i].fabook_account_date
+        params.remark = newList[i].fabook_account_remark
+        if (this.memeryData.userInfo.userId) params.id = this.memeryData.userInfo.userId
+        if (this.memeryData.userInfo.username) params.name = this.memeryData.userInfo.username
+        if (this.memeryData.userInfo.familyId) params.family = this.memeryData.userInfo.familyId
+        let _this = this
+        this.$http.post(this.memeryData.serverUrl + '/account/newAccount', params, {emulateJSON: true}).then(function (response) {
+          if (response.body.msg === 'success') {
+            successIndex++
+            if (successIndex === newList.length) {
+              localStorage.removeItem('newAccount')
+              _this.toastMsg = '新增记录成功！'
+              _this.$refs.toastMsg.openToast()
+              setTimeout(function () {
+                _this.leftBtnClick()
+              }, 1000)
+            }
+          } else {
+            _this.toastMsg = response.body.msgText
+            _this.$refs.toastMsg.openToast()
+          }
+        }, function (response) {
+          _this.toastMsg = '创建失败，请联系管理员！'
+          _this.$refs.toastMsg.openToast()
+          console.log(response)
+        })
+      }
     }
   }
 }

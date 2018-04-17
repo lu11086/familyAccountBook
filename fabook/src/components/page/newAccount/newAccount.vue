@@ -170,26 +170,56 @@ export default {
         params.amount = this.accountAmount
         params.time = this.accountDate
         params.remark = this.accountRemark
-        params.id = this.memeryData.userInfo.userId
-        params.name = this.memeryData.userInfo.username
-        params.family = this.memeryData.userInfo.familyId
-        let _this = this
-        this.$http.post(this.memeryData.serverUrl + '/account/newAccount', params, {emulateJSON: true}).then(function (response) {
-          if (response.body.msg === 'success') {
-            _this.toastMsg = '新增记录成功！'
+        if (this.memeryData.userInfo.userId) params.id = this.memeryData.userInfo.userId
+        if (this.memeryData.userInfo.username) params.name = this.memeryData.userInfo.username
+        if (this.memeryData.userInfo.familyId) params.family = this.memeryData.userInfo.familyId
+        if (this.memeryData.isLogin) {
+          let _this = this
+          this.$http.post(this.memeryData.serverUrl + '/account/newAccount', params, {emulateJSON: true}).then(function (response) {
+            if (response.body.msg === 'success') {
+              _this.toastMsg = '新增记录成功！'
+              _this.$refs.toastMsg.openToast()
+              setTimeout(function () {
+                _this.closeNewAccount()
+              }, 1000)
+            } else {
+              _this.toastMsg = response.body.msgText
+              _this.$refs.toastMsg.openToast()
+            }
+          }, function (response) {
+            _this.toastMsg = '创建失败，请联系管理员！'
             _this.$refs.toastMsg.openToast()
-            setTimeout(function () {
-              _this.closeNewAccount()
-            }, 1000)
+            console.log(response)
+          })
+        } else {
+          let newList
+          if (localStorage.getItem('newAccount')) {
+            newList = JSON.parse(localStorage.getItem('newAccount'))
           } else {
-            _this.toastMsg = response.body.msgText
-            _this.$refs.toastMsg.openToast()
+            newList = []
           }
-        }, function (response) {
-          _this.toastMsg = '创建失败，请联系管理员！'
-          _this.$refs.toastMsg.openToast()
-          console.log(response)
-        })
+          let data = {
+            'fabook_account_title': params.title,
+            'fabook_account_is_pay': params.isPay,
+            'fabook_account_type': params.type,
+            'fabook_account_remark': params.remark,
+            'fabook_account_income': 0,
+            'fabook_account_pay': 0,
+            'fabook_account_date': params.time
+          }
+          if (params.isPay > 0) {
+            data.fabook_account_pay = params.amount
+          } else {
+            data.fabook_account_income = params.amount
+          }
+          newList.push(data)
+          localStorage.setItem('newAccount', JSON.stringify(newList))
+          this.toastMsg = '已新增记录至本地，请及时上传'
+          this.$refs.toastMsg.openToast()
+          setTimeout(function () {
+            this.closeNewAccount()
+          }, 1000)
+        }
       }
     }
   },
