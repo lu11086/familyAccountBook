@@ -179,6 +179,7 @@ export default {
             if (response.body.msg === 'success') {
               _this.toastMsg = '新增记录成功！'
               _this.$refs.toastMsg.openToast()
+              _this.resetDataHere()
               setTimeout(function () {
                 _this.closeNewAccount()
               }, 1000)
@@ -216,11 +217,28 @@ export default {
           localStorage.setItem('newAccount', JSON.stringify(newList))
           this.toastMsg = '已新增记录至本地，请及时上传'
           this.$refs.toastMsg.openToast()
+          this.resetDataHere()
           setTimeout(function () {
             this.closeNewAccount()
           }, 1000)
         }
       }
+    },
+    resetDataHere: function () {
+      this.accountPay = true
+      this.accountTitle = ''
+      this.titleError = false
+      this.payType = 201
+      this.incomeType = 101
+      this.accountRemark = ''
+      this.remarkError = false
+      this.accountDate = ''
+      this.isCalendarShow = false
+      this.accountAmount = ''
+      this.toastMsg = ''
+      let myDate = new Date()
+      let dealData = myDate.getFullYear() + '/' + (myDate.getMonth() + 1) + '/' + myDate.getDate()
+      this.accountDate = this.dealDateInfo(dealData)
     }
   },
   beforeDestroy () {
